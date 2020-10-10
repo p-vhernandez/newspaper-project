@@ -5,6 +5,22 @@
     <p class="lead newspaper-desc">Newspaper description</p>
   </div>
 
+  <div class="login-form">
+    <input class="input-username"
+           type="text" 
+           name="username"
+           placeholder="username">
+
+    <input class="input-password"
+           type="text" 
+           name="password"
+           placeholder="password">  
+
+    <button class="input-button btn btn-primary mr-2">
+      Login
+    </button>
+  </div>
+
   <div class="nav-buttons">
     <button class="btn btn-primary mr-2"
             [routerLink]="['/articleGrid']">
@@ -21,10 +37,10 @@
         Article form
     </button>
 
-    <button class="btn btn-primary mr-2 login-btn"
+    <!-- <button class="btn btn-primary mr-2 login-btn"
             [routerLink]="['/loginForm']">
         Login
-    </button>
+    </button> -->
   </div>
 
   <br>

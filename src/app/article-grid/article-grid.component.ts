@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { New } from '../interfaces/new';
+import { NewsService } from '../services/news-service/news.service';
 
 @Component({
   selector: 'app-article-grid',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArticleGridComponent implements OnInit {
 
-  constructor() { }
+  private allNews: Observable<New[]>;
+
+  constructor(private newsService: NewsService) {
+
+  }
 
   ngOnInit(): void {
+    this.downloadContent();
+  }
+
+  downloadContent(): void {
+    this.allNews = this.newsService.getAllNews();
+    console.log(this.allNews);
   }
 
 }
