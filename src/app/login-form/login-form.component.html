@@ -1,1 +1,33 @@
-<p>login-form works!</p>
+<h2 class="lean login-title">Welcome back!</h2>
+
+<br>
+<br>
+
+<div class="login-form">
+    <input class="input-username"
+           [(ngModel)]="username"
+           type="text" 
+           #lusername="ngModel"
+           placeholder="username"
+           name="lusername"
+           #lusername="ngModel"
+           required>
+
+    <input class="input-password"
+           [(ngModel)]="password"
+           type="password" 
+           placeholder="password"
+           name="lpassword"
+           #lpassword="ngModel"
+           required>  
+
+    <button class="input-button btn btn-primary mr-2"
+            (click)=userLogin()>
+      Login
+    </button>
+
+    <button class="input-button cancel-button btn btn-primary mr-2"
+            [routerLink]="'/articleGrid'">
+      Cancel
+    </button>
+</div>

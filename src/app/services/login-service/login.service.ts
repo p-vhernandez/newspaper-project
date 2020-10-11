@@ -19,6 +19,7 @@ export class LoginService {
   private httpOptions = {
     headers: new HttpHeaders()
       .set('Content-Type', 'x-www-form-urlencoded')
+      .set
   }
 
   constructor(private http: HttpClient) { }
@@ -33,9 +34,8 @@ export class LoginService {
       .set('passwd', pwd);
 
     return this.http.post<User>(this.loginURL, usereq).pipe(
-      tap(user => {
-        this.user = user;
-      })
+      tap(user => { this.user = user; }),
+      catchError(this.handleError<User>('login', null))
     );
   }
 

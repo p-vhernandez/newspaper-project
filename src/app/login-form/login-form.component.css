@@ -1,0 +1,31 @@
+.login-title {
+    margin-top: 10%;
+    text-align: center;
+}
+
+.login-form {
+    width: 70%;
+    margin: auto;
+}
+
+.input-username, 
+.input-password {
+    width: 100%;
+    margin-bottom: 4%;
+}
+
+.input-username::placeholder,
+.input-password::placeholder {
+    padding-left: 2%;
+    color: lightgrey;
+}
+
+.input-button {
+    width: 100%;
+    margin-bottom: 2%;
+}
+
+.cancel-button {
+    border-color: darkslategrey;
+    background-color: darkslategrey;
+}

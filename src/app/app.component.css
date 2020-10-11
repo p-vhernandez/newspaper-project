@@ -2,22 +2,3 @@
 .newspaper-desc {
     text-align: center;
 }
-
-.login-form {
-    width: 100%;
-    margin-left: auto;
-    margin-right: 0;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.input-username,
-.input-password {
-    margin-right: 2%;
-}
-
-.input-username::placeholder,
-.input-password::placeholder {
-    padding-left: 2%;
-    color: lightgrey;
-}

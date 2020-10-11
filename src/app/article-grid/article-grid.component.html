@@ -1,1 +1,32 @@
-<p>article-grid works!</p>
+<div class="content">
+
+    <div class="user">
+        <!-- <p class="lead user-welcome"
+           [ngClass]="user == null ? 'user-welcome-hide' : ''">Welcome back, </p> -->
+        <button class="btn btn-primary mr-2 login-btn"
+                [routerLink]="['/loginForm']">
+            Login
+        </button>
+    </div>
+
+    <br>
+
+    <div class="news-navigation">
+        
+    </div>
+
+    <br>
+    <br>
+
+    <div class="news-list" 
+         *ngFor="let new of allNews">
+        <div class="article">
+            <img class="article-image"
+                 src="new.thumbnail_image" 
+                 alt="Article image">
+            <p>{{ new.title }}</p>
+            <p>{{ new.abstract }}</p>
+        </div>
+    </div>
+
+</div>
