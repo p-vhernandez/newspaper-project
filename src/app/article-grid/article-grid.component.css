@@ -3,7 +3,6 @@
     font-family: 'Work Sans';
     font-size: 16px;
     float: left;
-    font-weight: lighter;
     margin: auto;
     color: lightslategray;
 }
@@ -84,3 +83,12 @@
     color: white;
     text-decoration: underline white;
 } */
+
+.action-btns {
+    float: right;
+}
+
+.action-btns button:hover {
+    background-color: black;
+    color: white;
+}

@@ -55,9 +55,17 @@
                 </a>
             </mat-card-content>
 
-            <mat-card-actions>
-                <button *ngIf="user != null">Edit article</button>
-                <button *ngIf="user != null">Remove article</button>
+            <mat-card-actions class="action-btns">
+                <button mat-button
+                        *ngIf="user != null">
+                    <i class="material-icons md-18">edit</i>
+                    Edit article
+                </button>
+                <button mat-button
+                        *ngIf="user != null">
+                    <i class="material-icons md-18">delete_outline</i>
+                    Delete article
+                </button>
             </mat-card-actions>
         </mat-card>
     </div>
