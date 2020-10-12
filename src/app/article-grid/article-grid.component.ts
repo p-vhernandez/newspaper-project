@@ -34,6 +34,11 @@ export class ArticleGridComponent implements OnInit {
     }
   }
 
+  userLogout(): void {
+    this.loginService.logout();
+    // TODO: Reload page
+  }
+
   downloadNews(): void {
     this.newsService.getAllNews().subscribe(
       news => {

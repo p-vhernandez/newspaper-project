@@ -1,4 +1,15 @@
 .newspaper-name,
 .newspaper-desc {
     text-align: center;
+    font-family: 'Georgia';
+}
+
+.newspaper-name {
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.newspaper-desc {
+    font-size: 16px;
 }

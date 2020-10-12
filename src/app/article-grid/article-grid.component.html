@@ -8,6 +8,11 @@
                 [routerLink]="['/loginForm']">
             Login
         </button>
+        <button class="btn btn-primary mr-2 login-btn"
+                *ngIf="user != null"
+                (click)="userLogout()">
+            Log out
+        </button>
     </div>
 
     <br>
