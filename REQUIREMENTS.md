@@ -8,7 +8,7 @@ shown in the article detail page. **- DONE**
 article. Article edition is not allowed by means of this links. **- DONE**
 - If the user is logged in, the following buttons must appear:
   - A button for each article to edit them redirecting the user to the edition form. **- BUTTON SHOWN - FUNCTIONALITY MISSING**
-  - A button to create a new article which redirects to an empty article edition form.
+  - A button to create a new article which redirects to an empty article edition form. **- BUTTON SHOWN - FUNCTIONALITY MISSING**
   - A button for each article to remove it. **- BUTTON SHOWN - FUNCTIONALITY MISSING**
 - Article removal requires the confirmation of the user before applying the removal.
 - Article removal must give some feedback to the user with the result of the operation.
