@@ -46,7 +46,13 @@
 }
 
 .article-title,
-.article-abstract {
+.article-abstract,
+.article-viewer-btn {
     text-align: center;
     font-family: 'Georgia';
+}
+
+.article-viewer-btn {
+    color: black;
+    text-decoration: underline;
 }

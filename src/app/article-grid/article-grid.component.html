@@ -35,10 +35,13 @@
     
                 <p class="article-title">{{ article.title }}</p>
                 <p class="article-abstract">{{ article.abstract }}</p>
+                
+                <a href="/articleViewer">
+                    <p class="article-viewer-btn">Read more</p>
+                </a>
             </mat-card-content>
 
             <mat-card-actions>
-                <button>Read more</button>
                 <button *ngIf="user != null">Edit article</button>
                 <button *ngIf="user != null">Remove article</button>
             </mat-card-actions>
