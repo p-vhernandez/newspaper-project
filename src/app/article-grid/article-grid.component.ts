@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Article } from '../interfaces/article';
 import { User } from '../interfaces/user';
@@ -17,7 +18,8 @@ export class ArticleGridComponent implements OnInit {
   private message: string;
 
   constructor(private newsService: NewsService,
-              private loginService: LoginService) {
+              private loginService: LoginService,
+              private router: Router) {
       
   }
 
@@ -36,7 +38,7 @@ export class ArticleGridComponent implements OnInit {
 
   userLogout(): void {
     this.loginService.logout();
-    // TODO: Reload page
+    // TODO: reload content (unshow buttons, change button, etc)
   }
 
   downloadNews(): void {

@@ -2,3 +2,8 @@
     font-family: 'Georgia';
     src: url("./georgia/georgia.ttf") format("opentype");
 }
+
+@font-face {
+    font-family: 'Work Sans';
+    src: url("./work-sans/Work-Sans.ttf") format("opentype");
+}

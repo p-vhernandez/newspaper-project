@@ -1,1 +1,32 @@
-<p>article-viewer works!</p>
+<div class="article">
+
+    <h2 *ngIf="article"
+        class="article-title">
+        {{ article.title }}
+    </h2>
+
+    <h5 *ngIf="article"
+        class="article-subtitle">
+        {{ article.subtitle }}
+    </h5>
+
+    <img *ngIf="article"
+         class="article-image img-fluid mx-auto"
+         [src]="'data:' + article?.image_media_type + ';base64,' + article?.image_data" 
+         alt="{{article?.image_description}}">
+
+    <p *ngIf="article"
+       class="article-abstract">{{ article.abstract }}</p>
+
+    <p *ngIf="article"
+       class="article-body">{{ article.body }}</p>
+
+    <div class="bottom-navigation">
+        <button mat-button class="back-btn"
+                [routerLink]="['/articleGrid']">
+            <i class="material-icons md-18">keyboard_backspace</i>
+            Back to home
+        </button>
+    </div>
+
+</div>

@@ -1,8 +1,8 @@
 <div class="content">
 
     <div class="user">
-        <!-- <p class="lead user-welcome"
-           [ngClass]="user == null ? 'user-welcome-hide' : ''">Welcome back, </p> -->
+        <p class="user-welcome"
+           *ngIf="user != null">Welcome back, {{ user.username }}</p>
         <button class="btn btn-primary mr-2 login-btn"
                 *ngIf="user == null"
                 [routerLink]="['/loginForm']">
@@ -12,6 +12,14 @@
                 *ngIf="user != null"
                 (click)="userLogout()">
             Log out
+        </button>
+    </div>
+    
+    <div class="new-article"
+        *ngIf="user != null">
+        <button class="btn btn-primary mr-2 new-btn"
+                [routerLink]="['/articleForm']">
+            Create new article
         </button>
     </div>
 
@@ -29,14 +37,20 @@
         <mat-card class="article"
                   *ngFor="let article of allArticles">
             <mat-card-content class="article-content">
-                <img class="article-image img-fluid mx-auto"
-                 [src]="'data:' + article?.thumbnail_media_type + ';base64,' + article?.thumbnail_image" 
-                 alt="Article image">
+                <a href="/articleViewer?article={{ article.id }}">
+                    <img class="article-image img-fluid mx-auto"
+                         [src]="'data:' + article?.thumbnail_media_type + ';base64,' + article?.thumbnail_image" 
+                         alt="Article image">
+                </a>
     
-                <p class="article-title">{{ article.title }}</p>
+                <a href="/articleViewer?article={{ article.id }}">
+                    <p class="article-title">{{ article.title }}</p>
+                </a>
+                
+                <p class="article-subtitle">{{ article.subtitle }}</p>
                 <p class="article-abstract">{{ article.abstract }}</p>
                 
-                <a href="/articleViewer">
+                <a href="/articleViewer?article={{ article.id }}">
                     <p class="article-viewer-btn">Read more</p>
                 </a>
             </mat-card-content>

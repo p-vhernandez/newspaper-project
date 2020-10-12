@@ -45,6 +45,7 @@ export class LoginService {
 
   logout() {
     this.user = null;
+    console.log('User logged out');
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
