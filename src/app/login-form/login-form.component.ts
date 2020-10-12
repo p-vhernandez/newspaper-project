@@ -26,7 +26,9 @@ export class LoginFormComponent implements OnInit {
     this.password = "";
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    
+  }
 
   userLogin(): void {
     this.loginService.login(this.username, this.password).subscribe(
@@ -46,6 +48,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   userIsLoggedIn(): void {
+    console.log(this.user);
     this.newsService.setUserApiKey(this.user.apikey);
     this.router.navigate(['/articleGrid']);
   }

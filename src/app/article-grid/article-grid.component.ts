@@ -39,7 +39,6 @@ export class ArticleGridComponent implements OnInit {
       news => {
         this.allNews = news;
         this.message = null;
-        // console.log(this.allNews);
         this.cleanNewsAbstract();
       },
       err => {
