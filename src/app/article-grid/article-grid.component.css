@@ -11,6 +11,22 @@
     font-size: 16px;
 }
 
+.article {
+    width: 30%;
+    margin: auto;
+    box-shadow: none !important;
+    border: 1px solid lightgray;
+}
+
 .article-image {
-    /* width: 150px; */
+    width: 100%;
+}
+
+.article-title {
+    margin-top: 2%;
+}
+
+.article-title,
+.article-abstract {
+    text-align: center;
 }

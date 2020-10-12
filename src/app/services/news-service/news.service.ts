@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Article } from 'src/app/interfaces/article';
-import { New } from 'src/app/interfaces/new';
 
 @Injectable({
   providedIn: 'root'
@@ -56,8 +55,8 @@ export class NewsService {
    *    thumbnail_image
    *    thumbnail_image_type
    */
-  getAllNews(): Observable<New[]> {
-    var news = this.http.get<New[]>(this.newsURL, this.httpOptions);
+  getAllNews(): Observable<Article[]> {
+    var news = this.http.get<Article[]>(this.newsURL, this.httpOptions);
     console.log(news);
     
     return news;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { New } from '../interfaces/new';
+import { Article } from '../interfaces/article';
 import { User } from '../interfaces/user';
 import { LoginService } from '../services/login-service/login.service';
 import { NewsService } from '../services/news-service/news.service';
@@ -13,7 +13,7 @@ import { NewsService } from '../services/news-service/news.service';
 export class ArticleGridComponent implements OnInit {
 
   user: User;
-  allNews: New[];
+  allArticles: Article[];
   private message: string;
 
   constructor(private newsService: NewsService,
@@ -37,12 +37,12 @@ export class ArticleGridComponent implements OnInit {
   downloadNews(): void {
     this.newsService.getAllNews().subscribe(
       news => {
-        this.allNews = news;
+        this.allArticles = news;
         this.message = null;
         this.cleanNewsAbstract();
       },
       err => {
-        this.allNews = null;
+        this.allArticles = null;
         this.message = `An error has ocurred: ${err.statusText}`
       },
       () => {
@@ -52,8 +52,8 @@ export class ArticleGridComponent implements OnInit {
   }
 
   cleanNewsAbstract(): void {
-    for (var i = 0; i < this.allNews.length; i++) {
-      var article = this.allNews[i];
+    for (var i = 0; i < this.allArticles.length; i++) {
+      var article = this.allArticles[i];
       article.abstract = article.abstract.replace(/<\/?[^>]+(>|$)/g, "");
     }
   }

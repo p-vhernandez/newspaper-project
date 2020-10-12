@@ -4,6 +4,7 @@
         <!-- <p class="lead user-welcome"
            [ngClass]="user == null ? 'user-welcome-hide' : ''">Welcome back, </p> -->
         <button class="btn btn-primary mr-2 login-btn"
+                *ngIf="user == null"
                 [routerLink]="['/loginForm']">
             Login
         </button>
@@ -18,16 +19,25 @@
     <br>
     <br>
 
-    <div class="news-list wrapper">
-        <ng-template ngFor let-new [ngForOf]="allNews" let-i="index">
-            <div class="item2">
-                <img class="article-image img-responsive"
-                    src="{{ new.thumbnail_image }}" 
-                    alt="Article image">
-                <p>{{ new.title }}</p>
-                <p>{{ new.abstract }}</p>
-            </div>
-        </ng-template>
+    <div fxLayout="row wrap"
+         class="article-card">
+        <mat-card class="article"
+                  *ngFor="let article of allArticles">
+            <mat-card-content class="article-content">
+                <img class="article-image img-fluid mx-auto"
+                 [src]="'data:' + article?.thumbnail_media_type + ';base64,' + article?.thumbnail_image" 
+                 alt="Article image">
+    
+                <p class="article-title">{{ article.title }}</p>
+                <p class="article-abstract">{{ article.abstract }}</p>
+            </mat-card-content>
+
+            <mat-card-actions>
+                <button>Read more</button>
+                <button *ngIf="user != null">Edit article</button>
+                <button *ngIf="user != null">Remove article</button>
+            </mat-card-actions>
+        </mat-card>
     </div>
 
 </div>
