@@ -18,15 +18,16 @@
     <br>
     <br>
 
-    <div class="news-list" 
-         *ngFor="let new of allNews">
-        <div class="article">
-            <img class="article-image"
-                 src="new.thumbnail_image" 
-                 alt="Article image">
-            <p>{{ new.title }}</p>
-            <p>{{ new.abstract }}</p>
-        </div>
+    <div class="news-list wrapper">
+        <ng-template ngFor let-new [ngForOf]="allNews" let-i="index">
+            <div class="item2">
+                <img class="article-image img-responsive"
+                    src="{{ new.thumbnail_image }}" 
+                    alt="Article image">
+                <p>{{ new.title }}</p>
+                <p>{{ new.abstract }}</p>
+            </div>
+        </ng-template>
     </div>
 
 </div>
