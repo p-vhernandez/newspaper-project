@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Article } from '../interfaces/article';
 import { User } from '../interfaces/user';
 import { LoginService } from '../services/login-service/login.service';
 import { NewsService } from '../services/news-service/news.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
 
 @Component({
   selector: 'app-article-grid',
@@ -19,7 +20,8 @@ export class ArticleGridComponent implements OnInit {
 
   constructor(private newsService: NewsService,
               private loginService: LoginService,
-              private router: Router) {
+              private router: Router,
+              private deleteDialog: MatDialog) {
       
   }
 
@@ -63,6 +65,15 @@ export class ArticleGridComponent implements OnInit {
       var article = this.allArticles[i];
       article.abstract = article.abstract.replace(/<\/?[^>]+(>|$)/g, "");
     }
+  }
+
+  deleteArticle(articleID: number): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      "articleID": articleID
+    };
+    
+    this.deleteDialog.open(DialogBodyComponent, dialogConfig);
   }
 
 }

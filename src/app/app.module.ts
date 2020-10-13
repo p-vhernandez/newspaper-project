@@ -10,12 +10,14 @@ import { ArticleViewerComponent } from './article-viewer/article-viewer.componen
 import { ArticleGridComponent } from './article-grid/article-grid.component';
 import { ArticleFormComponent } from './article-form/article-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ArticleViewerComponent,
     ArticleGridComponent,
     ArticleFormComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    DialogBodyComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatCardModule,
     MatToolbarModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

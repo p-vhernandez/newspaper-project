@@ -62,7 +62,8 @@
                     Edit article
                 </button>
                 <button mat-button
-                        *ngIf="user != null">
+                        *ngIf="user != null"
+                        (click)="deleteArticle(article.id)">
                     <i class="material-icons md-18">delete_outline</i>
                     Delete article
                 </button>

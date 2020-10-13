@@ -1,0 +1,15 @@
+.article-dialog-title,
+.article-dialog-content,
+.delete-dialog-actions {
+    font-family: 'Work Sans';
+}
+
+.delete-dialog-actions {
+    float: right;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.cancel-btn {
+    margin-right: 10px;
+}
