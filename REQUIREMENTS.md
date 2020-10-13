@@ -13,6 +13,7 @@ article. Article edition is not allowed by means of this links. **- DONE**
 - Article removal requires the confirmation of the user before applying the removal. **- DONE**
 - Article removal must give some feedback to the user with the result of the operation.
 
+
 **Login form**
 - A login form (username and password) and a button for log in must be shown in the main page of
 the application **- DONE**
@@ -20,6 +21,7 @@ the application **- DONE**
 the name of the user (e.g. “Hello xxxx”) and a logout button must be shown **- DONE**
 - If the username or password are incorrect, a message with this information must be
 shown
+
 
 **Navigation bar of the main page**
 - The navigation bar must show all buttons/links for all categories shown in the newspaper, that is,
@@ -33,6 +35,7 @@ edit the article contents.
 - The navigation bar should be properly shown in mobile devices. Ideally, it should be collapsed in
 one button for small devices.
 
+
 **Article details page**
 - The article details must be shown with its title, subtitle, abstract, category, body and picture (if it is
 included in the article). **- DONE**
@@ -40,6 +43,7 @@ included in the article). **- DONE**
 end of the details page.
 - Articles cannot be modified in the details view **- DONE**
 - As the article body is written in HTML, its content must be properly shown by the application **- MUST BE REVIEWED. NOW WE "CLEAN" ABSTRACT AND BODY TO GET RID OF HTML TAGS**
+
 
 **Article edition and creation**
 - The form must include all input to edit/create the article, that is: title, subtitle, abstract, body and
@@ -52,6 +56,7 @@ Technology.
 the form information added by the user.
 - Saving information must give some feedback to the user with the result of the operation
 
+
 **Other tasks**
 - When the user is logged in, show the "welcome, xxxx" message next to the "log out" button.
 - When the user logs out, we have to figure out how to reload the page content in order to:
@@ -59,6 +64,7 @@ the form information added by the user.
   - Unshow the "welcome, xxxx" message
   - Unshow the edit and delete buttons from the articles.
 - Delete article functionality.
+
 
 **Handy links**
 
