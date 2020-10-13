@@ -10,7 +10,7 @@ article. Article edition is not allowed by means of this links. **- DONE**
   - A button for each article to edit them redirecting the user to the edition form. **- BUTTON SHOWN - FUNCTIONALITY MISSING**
   - A button to create a new article which redirects to an empty article edition form. **- BUTTON SHOWN - FUNCTIONALITY MISSING**
   - A button for each article to remove it. **- NOT WORKING? REVIEW & REFRESH PAGE AFTER DELETING**
-- Article removal requires the confirmation of the user before applying the removal. **- DIALOG CREATED, FUNCTIONALITY MISSING**
+- Article removal requires the confirmation of the user before applying the removal. **- DONE**
 - Article removal must give some feedback to the user with the result of the operation.
 
 **Login form**
