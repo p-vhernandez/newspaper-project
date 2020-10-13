@@ -25,6 +25,7 @@ export class ArticleViewerComponent implements OnInit {
       retrievedArticle => {
         this.article = retrievedArticle;  
         this.message = null;
+        console.log(this.article);
         this.cleanArticleAbstract();
         this.cleanArticleBody();
       },

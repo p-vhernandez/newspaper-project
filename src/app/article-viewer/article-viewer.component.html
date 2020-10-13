@@ -21,6 +21,10 @@
     <p *ngIf="article"
        class="article-body">{{ article.body }}</p>
 
+    <div class="article-edit-info">
+        <p class="article-update-info">{{ article.id_user }} · {{ article.update_date }}</p>
+    </div>
+
     <div class="bottom-navigation">
         <button mat-button class="back-btn"
                 [routerLink]="['/articleGrid']">
