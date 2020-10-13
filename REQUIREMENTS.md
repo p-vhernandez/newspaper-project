@@ -64,6 +64,7 @@ the form information added by the user.
   - Unshow the "welcome, xxxx" message
   - Unshow the edit and delete buttons from the articles.
 - Delete article functionality.
+- Finish error catch in services.
 
 
 **Handy links**
