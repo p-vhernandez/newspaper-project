@@ -10,7 +10,7 @@ article. Article edition is not allowed by means of this links. **- DONE**
   - A button for each article to edit them redirecting the user to the edition form. **- BUTTON SHOWN - FUNCTIONALITY MISSING**
   - A button to create a new article which redirects to an empty article edition form. **- BUTTON SHOWN - FUNCTIONALITY MISSING**
   - A button for each article to remove it. **- BUTTON SHOWN - FUNCTIONALITY MISSING**
-- Article removal requires the confirmation of the user before applying the removal.
+- Article removal requires the confirmation of the user before applying the removal. **- DIALOG CREATED, FUNCTIONALITY MISSING**
 - Article removal must give some feedback to the user with the result of the operation.
 
 **Login form**
@@ -58,3 +58,4 @@ the form information added by the user.
   - Change the "log out" button for the "log in" one. 
   - Unshow the "welcome, xxxx" message
   - Unshow the edit and delete buttons from the articles.
+- Delete article functionality.
