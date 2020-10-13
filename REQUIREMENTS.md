@@ -12,7 +12,7 @@
 
 
 **Login form**
-- ~~A login form (username and password) and a button for log in must be shown in the main page of the application.
+- ~~A login form (username and password) and a button for log in must be shown in the main page of the application.~~
 - ~~If the user introduces the correct username and password, the form must be replaced by the name of the user (e.g. “Hello xxxx”) and a logout button must be shown.~~
 - If the username or password are incorrect, a message with this information must be shown
 
