@@ -1,11 +1,8 @@
 ###### We will describe the functional requirements of the web interface of the newspaper application.
 **Main page**
 - ~~The main page must show the list of articles retrieved form the server.~~
-- ~~Every article in the main page must include: their title, subtitle, thumbnail of the article image (if~~
-~~exists) and their abstract. The body of the article is not shown in the main page and it will be
-shown in the article detail page.~~
-- ~~The article title and the article image must navigate to the details page of the corresponding ~~
-~~article. Article edition is not allowed by means of this links.~~
+- ~~Every article in the main page must include: their title, subtitle, thumbnail of the article image (if exists) and their abstract. The body of the article is not shown in the main page and it will be shown in the article detail page.~~
+- ~~The article title and the article image must navigate to the details page of the correspondingarticle. Article edition is not allowed by means of this links.~~
 - If the user is logged in, the following buttons must appear:
   - A button for each article to edit them redirecting the user to the edition form. **- BUTTON SHOWN - FUNCTIONALITY MISSING**
   - A button to create a new article which redirects to an empty article edition form. **- BUTTON SHOWN - FUNCTIONALITY MISSING**
@@ -15,12 +12,9 @@ shown in the article detail page.~~
 
 
 **Login form**
-- ~~A login form (username and password) and a button for log in must be shown in the main page of~~
-~~the application~~
-- ~~If the user introduces the correct username and password, the form must be replaced by~~
-~~the name of the user (e.g. “Hello xxxx”) and a logout button must be shown~~
-- If the username or password are incorrect, a message with this information must be
-shown
+- ~~A login form (username and password) and a button for log in must be shown in the main page of the application.
+- ~~If the user introduces the correct username and password, the form must be replaced by the name of the user (e.g. “Hello xxxx”) and a logout button must be shown.~~
+- If the username or password are incorrect, a message with this information must be shown
 
 
 **Navigation bar of the main page**
@@ -37,10 +31,8 @@ one button for small devices.
 
 
 **Article details page**
-- ~~The article details must be shown with its title, subtitle, abstract, category, body and picture (if it is~~
-~~included in the article).~~
-- The modification date and the username who have modified the content must be shown at the **- CHANGE USER ID FOR USERNAME**
-end of the details page.
+- ~~The article details must be shown with its title, subtitle, abstract, category, body and picture (if it is included in the article).~~
+- The modification date and the username who have modified the content must be shown at the end of the details page. **- CHANGE USER ID FOR USERNAME**
 - ~~Articles cannot be modified in the details view~~
 - As the article body is written in HTML, its content must be properly shown by the application **- MUST BE REVIEWED. NOW WE "CLEAN" ABSTRACT AND BODY TO GET RID OF HTML TAGS**
 
