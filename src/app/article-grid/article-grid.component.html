@@ -36,38 +36,40 @@
          class="article-card">
         <mat-card class="article"
                   *ngFor="let article of allArticles">
-            <mat-card-content class="article-content">
-                <a href="/articleViewer?article={{ article.id }}">
-                    <img class="article-image img-fluid mx-auto"
-                         [src]="'data:' + article?.thumbnail_media_type + ';base64,' + article?.thumbnail_image" 
-                         alt="Article image">
-                </a>
-    
-                <a href="/articleViewer?article={{ article.id }}">
-                    <p class="article-title">{{ article.title }}</p>
-                </a>
-                
-                <p class="article-subtitle">{{ article.subtitle }}</p>
-                <p class="article-abstract">{{ article.abstract }}</p>
-                
-                <a href="/articleViewer?article={{ article.id }}">
-                    <p class="article-viewer-btn">Read more</p>
-                </a>
-            </mat-card-content>
+            <div *ngIf="article.is_deleted == 0">
+                <mat-card-content class="article-content">
+                    <a href="/articleViewer?article={{ article.id }}">
+                        <img class="article-image img-fluid mx-auto"
+                            [src]="'data:' + article?.thumbnail_media_type + ';base64,' + article?.thumbnail_image" 
+                            alt="Article image">
+                    </a>
+        
+                    <a href="/articleViewer?article={{ article.id }}">
+                        <p class="article-title">{{ article.title }}</p>
+                    </a>
+                    
+                    <p class="article-subtitle">{{ article.subtitle }}</p>
+                    <p class="article-abstract">{{ article.abstract }}</p>
+                    
+                    <a href="/articleViewer?article={{ article.id }}">
+                        <p class="article-viewer-btn">Read more</p>
+                    </a>
+                </mat-card-content>
 
-            <mat-card-actions class="action-btns">
-                <button mat-button
-                        *ngIf="user != null">
-                    <i class="material-icons md-18">edit</i>
-                    Edit article
-                </button>
-                <button mat-button
-                        *ngIf="user != null"
-                        (click)="deleteArticle(article.id)">
-                    <i class="material-icons md-18">delete_outline</i>
-                    Delete article
-                </button>
-            </mat-card-actions>
+                <mat-card-actions class="action-btns">
+                    <button mat-button
+                            *ngIf="user != null">
+                        <i class="material-icons md-18">edit</i>
+                        Edit article
+                    </button>
+                    <button mat-button
+                            *ngIf="user != null"
+                            (click)="deleteArticle(article.id)">
+                        <i class="material-icons md-18">delete_outline</i>
+                        Delete article
+                    </button>
+                </mat-card-actions>
+            </div>
         </mat-card>
     </div>
 
