@@ -59,3 +59,6 @@ the form information added by the user.
   - Unshow the "welcome, xxxx" message
   - Unshow the edit and delete buttons from the articles.
 - Delete article functionality.
+
+**Handy links**
+[Refreshing route information](https://medium.com/angular-in-depth/refresh-current-route-in-angular-512a19d58f6e)
