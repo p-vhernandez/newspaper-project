@@ -36,7 +36,7 @@ one button for small devices.
 **Article details page**
 - The article details must be shown with its title, subtitle, abstract, category, body and picture (if it is
 included in the article). **- DONE**
-- The modification date and the username who have modified the content must be shown at the
+- The modification date and the username who have modified the content must be shown at the **- DONE -> CHANGE USER ID FOR USERNAME**
 end of the details page.
 - Articles cannot be modified in the details view **- DONE**
 - As the article body is written in HTML, its content must be properly shown by the application **- MUST BE REVIEWED. NOW WE "CLEAN" ABSTRACT AND BODY TO GET RID OF HTML TAGS**
