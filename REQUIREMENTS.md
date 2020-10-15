@@ -18,10 +18,10 @@
 
 
 **Navigation bar of the main page**
-- The navigation bar must show all buttons/links for all categories shown in the newspaper, that is, National, Economy, Sports, Technology and All.
-- Links/buttons in the navigation bar must filter the articles shown in the main page according to the selected category.
+- ~~The navigation bar must show all buttons/links for all categories shown in the newspaper, that is, National, Economy, Sports, Technology and All.~~
+- ~~Links/buttons in the navigation bar must filter the articles shown in the main page according to the selected category.~~
 - ~~The navigation bar includes a text field to add some text that will be used to filter the articles shown in the main page of the newspaper.~~
-- If the user is logged in, articles can be created, edited and removed. Otherwise, the user cannot edit the article contents.
+- ~~If the user is logged in, articles can be created, edited and removed. Otherwise, the user cannot edit the article contents.~~
 - The navigation bar should be properly shown in mobile devices. Ideally, it should be collapsed in one button for small devices.
 
 
