@@ -24,9 +24,42 @@
     </div>
 
     <br>
+    <br>
 
     <div class="news-navigation">
-        
+        <button mat-button 
+                class="nav-btn"
+                (click)="filterArticles(0)">
+            All articles
+        </button>
+        <button mat-button 
+                class="nav-btn"
+                (click)="filterArticles(1)">
+            National
+        </button>
+        <button mat-button 
+                class="nav-btn"
+                (click)="filterArticles(2)">
+            Economy
+        </button>
+        <button mat-button 
+                class="nav-btn"
+                (click)="filterArticles(3)">
+            Sports
+        </button>
+        <button mat-button 
+                class="nav-btn"
+                (click)="filterArticles(4)">
+            Technology
+        </button>
+
+        <div class="article-filter">
+            <input type="text"
+                   class="lead article-filter-input"
+                   name="content"
+                   [(ngModel)]="content"
+                   placeholder="Specific content you're looking for...">
+        </div>
     </div>
 
     <br>
@@ -35,7 +68,7 @@
     <div fxLayout="row wrap"
          class="article-card">
         <mat-card class="article"
-                  *ngFor="let article of allArticles">
+                  *ngFor="let article of articlesToShow | articleFilter:content">
             <div *ngIf="article.is_deleted == 0">
                 <mat-card-content class="article-content">
                     <a href="/articleViewer?article={{ article.id }}">
