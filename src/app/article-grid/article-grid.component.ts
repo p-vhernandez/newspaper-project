@@ -32,7 +32,7 @@ export class ArticleGridComponent implements OnInit {
     this.checkUserLoggedIn();
     this.downloadNews();
   }
-
+  
   checkUserLoggedIn(): void {
     if (this.loginService.isLogged()) {
       this.user = this.loginService.getUser();
@@ -43,7 +43,7 @@ export class ArticleGridComponent implements OnInit {
 
   userLogout(): void {
     this.loginService.logout();
-    // TODO: reload content (unshow buttons, change button, etc)
+    this.user = this.loginService.getUser();
   }
 
   downloadNews(): void {

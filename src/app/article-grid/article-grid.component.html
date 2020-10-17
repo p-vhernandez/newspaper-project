@@ -92,7 +92,9 @@
 
                 <mat-card-actions class="action-btns">
                     <button mat-button
-                            *ngIf="user != null">
+                            *ngIf="user != null"
+                            [routerLink]="['/articleForm']"
+                            [queryParams]="{'articleID': article.id}">
                         <i class="material-icons md-18">edit</i>
                         Edit article
                     </button>

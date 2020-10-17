@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from '../interfaces/article';
 import { NewsService } from '../services/news-service/news.service';
 
@@ -12,15 +12,36 @@ import { NewsService } from '../services/news-service/news.service';
 export class ArticleFormComponent implements OnInit {
 
   article: Article;
+  articleID: number;
   @ViewChild('articleForm') articleForm: any;
 
-  constructor(private newsService: NewsService) { 
+  edition: boolean;
+
+  constructor(private newsService: NewsService, 
+              private route: ActivatedRoute) { 
     this.article = null;
+    this.edition = false;
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.articleID = Number(this.route.snapshot.queryParamMap.get('articleID'));
+    this.checkArticleID();
+  }
+
+  checkArticleID(): void {
+    if (this.articleID != undefined 
+      || this.articleID != null) {
+        this.edition = true;
+    }
+
+    console.log(this.edition)
+  }
 
   sendArticle(): void {
+
+  }
+
+  editArticle(): void {
 
   }
 
