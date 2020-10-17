@@ -29,7 +29,7 @@
 - ~~The article details must be shown with its title, subtitle, abstract, category, body and picture (if it is included in the article).~~
 - The modification date and the username who have modified the content must be shown at the end of the details page. **- CHANGE USER ID FOR USERNAME**
 - ~~Articles cannot be modified in the details view~~
-- As the article body is written in HTML, its content must be properly shown by the application **- MUST BE REVIEWED. NOW WE "CLEAN" ABSTRACT AND BODY TO GET RID OF HTML TAGS**
+- ~~As the article body is written in HTML, its content must be properly shown by the application.~~
 
 
 **Article edition and creation**
