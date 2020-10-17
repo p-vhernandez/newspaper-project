@@ -6,6 +6,7 @@ import { LoginService } from '../services/login-service/login.service';
 import { NewsService } from '../services/news-service/news.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
+import { ArticleFilterPipe } from '../pipes/article-filter.pipe';
 
 @Component({
   selector: 'app-article-grid',
@@ -16,13 +17,15 @@ export class ArticleGridComponent implements OnInit {
 
   user: User;
   allArticles: Article[];
+  articlesToShow: Article[];
   private message: string;
+  content: string;
 
   constructor(private newsService: NewsService,
               private loginService: LoginService,
               private router: Router,
               private deleteDialog: MatDialog) {
-      
+      this.content = "";
   }
 
   ngOnInit(): void { 
@@ -47,7 +50,9 @@ export class ArticleGridComponent implements OnInit {
     this.newsService.getAllNews().subscribe(
       news => {
         this.allArticles = news;
+        this.articlesToShow = this.allArticles;
         this.message = null;
+        console.log(this.allArticles);
         this.cleanNewsAbstract();
       },
       err => {
@@ -74,6 +79,32 @@ export class ArticleGridComponent implements OnInit {
     };
     
     this.deleteDialog.open(DialogBodyComponent, dialogConfig);
+  }
+
+  filterArticles(filter: number): void {
+    switch(filter) {
+      case 0:
+        this.articlesToShow = this.allArticles;
+        break;
+      case 1:
+        this.articlesToShow = this.filterBy("National");
+        break;
+      case 2:
+        this.articlesToShow = this.filterBy("Economy");
+        break;
+      case 3:
+        this.articlesToShow = this.filterBy("Sports");
+        break;
+      case 4:
+        this.articlesToShow = this.filterBy("Technology");
+        break;
+    }
+  }
+
+  filterBy(category: string): Array<Article> {
+      return this.allArticles.filter(function(article) {
+        return article.category == category;
+      });
   }
 
 }

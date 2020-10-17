@@ -92,3 +92,46 @@
     background-color: black;
     color: white;
 }
+
+.news-navigation {
+    display: inline;
+}
+
+.nav-btn {
+    margin-right: 1% !important;
+}
+
+.article-filter {
+    margin-bottom: 0;
+    overflow: hidden;
+    display: contents;
+    margin: 0.5% 0 0 0;
+}
+
+.article-filter-text,
+.article-filter-input {
+    margin-bottom: 0.5%;
+}
+
+.article-filter-text {
+    float: left;
+    width: 30%;
+    font-size: 18px;
+}
+
+.article-filter-input {
+    width: 30%;
+}
+
+.article-filter-input::placeholder {
+    color: grey;
+    font-size: 16px;
+}
+
+.article-filter-input::content {
+    padding-left: 2%;
+}
+
+.action-filter {
+    margin-right: 2%;
+}
