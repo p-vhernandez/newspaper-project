@@ -53,7 +53,6 @@ export class ArticleGridComponent implements OnInit {
         this.articlesToShow = this.allArticles;
         this.message = null;
         console.log(this.allArticles);
-        this.cleanNewsAbstract();
       },
       err => {
         this.allArticles = null;
@@ -63,13 +62,6 @@ export class ArticleGridComponent implements OnInit {
         console.log('Get news operation finished');
       }
     );
-  }
-
-  cleanNewsAbstract(): void {
-    for (var i = 0; i < this.allArticles.length; i++) {
-      var article = this.allArticles[i];
-      article.abstract = article.abstract.replace(/<\/?[^>]+(>|$)/g, "");
-    }
   }
 
   deleteArticle(articleID: number): void {

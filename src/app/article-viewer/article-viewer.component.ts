@@ -26,8 +26,6 @@ export class ArticleViewerComponent implements OnInit {
         this.article = retrievedArticle;  
         this.message = null;
         console.log(this.article);
-        this.cleanArticleAbstract();
-        this.cleanArticleBody();
       },
       err => {
         this.article = null;
@@ -37,15 +35,6 @@ export class ArticleViewerComponent implements OnInit {
         console.log('Get news operation finished');
       }
     );
-  }
-
-  cleanArticleAbstract(): void {
-    this.article.abstract = this.article.abstract.replace(/<\/?[^>]+(>|$)/g, "");
-  }
-
-  cleanArticleBody(): void {
-    this.article.body = this.article.body.replace(/<br>/g, "\n");
-    this.article.body = this.article.body.replace(/<\/?[^>]+(>|$)/g, "");
   }
 
 }

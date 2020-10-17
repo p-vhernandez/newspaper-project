@@ -14,12 +14,14 @@
          class="article-image img-fluid mx-auto"
          [src]="'data:' + article?.image_media_type + ';base64,' + article?.image_data" 
          alt="{{article?.image_description}}">
+         
+    <div *ngIf="article"
+         class="article-abstract" 
+         [innerHTML]="article.abstract"> </div>
 
-    <p *ngIf="article"
-       class="article-abstract">{{ article.abstract }}</p>
-
-    <p *ngIf="article"
-       class="article-body">{{ article.body }}</p>
+    <div *ngIf="article"
+         class="article-body" 
+         [innerHTML]="article.body"> </div>
 
     <div class="article-edit-info">
         <p class="article-update-info">{{ article.id_user }} · {{ article.update_date }}</p>

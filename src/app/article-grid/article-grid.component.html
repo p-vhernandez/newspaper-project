@@ -82,7 +82,8 @@
                     </a>
                     
                     <p class="article-subtitle">{{ article.subtitle }}</p>
-                    <p class="article-abstract">{{ article.abstract }}</p>
+                    <div class="article-abstract" 
+                         [innerHTML]="article.abstract"> </div>
                     
                     <a href="/articleViewer?article={{ article.id }}">
                         <p class="article-viewer-btn">Read more</p>
