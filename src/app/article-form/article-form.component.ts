@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MyArticle } from '../classes/article';
 import { Article } from '../interfaces/article';
 import { NewsService } from '../services/news-service/news.service';
 
@@ -33,6 +34,7 @@ export class ArticleFormComponent implements OnInit {
     };
 
     this.edition = false;
+    this.articleID = null;
   }
 
   ngOnInit(): void {
@@ -41,16 +43,21 @@ export class ArticleFormComponent implements OnInit {
   }
 
   checkArticleID(): void {
-    if (this.articleID != undefined 
-      || this.articleID != null) {
+    if (this.articleID != null 
+        || this.articleID != 0) {
         this.edition = true;
     }
-
-    console.log(this.edition)
   }
 
   sendArticle(): void {
-    
+    if (!this.edition) {
+      console.log(this.article);
+
+      let newArticle = new MyArticle(this.article);
+      console.log(newArticle);
+    } else {
+      console.log("Edition is true");
+    }
   }
 
 }
