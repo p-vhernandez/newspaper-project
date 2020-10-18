@@ -22,7 +22,7 @@
 - ~~Links/buttons in the navigation bar must filter the articles shown in the main page according to the selected category.~~
 - ~~The navigation bar includes a text field to add some text that will be used to filter the articles shown in the main page of the newspaper.~~
 - ~~If the user is logged in, articles can be created, edited and removed. Otherwise, the user cannot edit the article contents.~~
-- The navigation bar should be properly shown in mobile devices. Ideally, it should be collapsed in one button for small devices.
+- ~~The navigation bar should be properly shown in mobile devices. Ideally, it should be collapsed in one button for small devices.~~
 
 
 **Article details page**
@@ -33,23 +33,20 @@
 
 
 **Article edition and creation**
-- The form must include all input to edit/create the article, that is: title, subtitle, abstract, body and
-image selection.
-- The categories must be selected in a combo with values: National, Economy, Sports and
-Technology.
+- The form must include all input to edit/create the article, that is: title, subtitle, abstract, body and image selection.
+- The categories must be selected in a combo with values: National, Economy, Sports and Technology.
 - Body can be fill in HTML format (a WYSIWYG editor can be used).
 - All inputs of the form (except the image) are mandatory and the form must be validated.
-- This form must include a button to come back to the main page and another button to save/create
-the form information added by the user.
+- This form must include a button to come back to the main page and another button to save/create the form information added by the user.
 - Saving information must give some feedback to the user with the result of the operation
 
 
 **Other tasks**
 - ~~When the user is logged in, show the "welcome, xxxx" message next to the "log out" button.~~
 - ~~When the user logs out, we have to figure out how to reload the page content in order to:~~
-  - ~~Change the "log out" button for the "log in" one.~~ 
-  - ~~Unshow the "welcome, xxxx" message~~
-  - ~~Unshow the edit and delete buttons from the articles.~~
+  - ~~Change the "log out" button for the "log in" one. ~~
+  - ~~Hide the "welcome, xxxx" message~~
+  - ~~Hide the edit and delete buttons from the articles.~~
 - Delete article functionality.
 - Finish error catch in services.
 - New article form functionality - unfinished.
