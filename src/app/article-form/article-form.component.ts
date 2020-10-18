@@ -3,6 +3,7 @@ import { ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MyArticle } from '../classes/article';
 import { Article } from '../interfaces/article';
+import { LoginService } from '../services/login-service/login.service';
 import { NewsService } from '../services/news-service/news.service';
 
 @Component({
@@ -19,14 +20,15 @@ export class ArticleFormComponent implements OnInit {
   edition: boolean;
 
   constructor(private newsService: NewsService, 
-              private route: ActivatedRoute) { 
+              private route: ActivatedRoute,
+              private loginService: LoginService) { 
     this.article = {
-      id: null,
-      id_user: null,
+      id: undefined,
+      id_user: undefined,
       title: '',
       subtitle: '',
       abstract: '',
-      update_date: null,
+      update_date: undefined,
       category: '',
       body: '',
       is_deleted: false,
@@ -38,8 +40,8 @@ export class ArticleFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.articleID = Number(this.route.snapshot.queryParamMap.get('articleID'));
-    this.checkArticleID();
+    // this.articleID = Number(this.route.snapshot.queryParamMap.get('articleID'));
+    // this.checkArticleID();
   }
 
   checkArticleID(): void {
@@ -50,14 +52,12 @@ export class ArticleFormComponent implements OnInit {
   }
 
   sendArticle(): void {
-    if (!this.edition) {
-      console.log(this.article);
+    let newArticle = new MyArticle(this.article);
+    let user = this.loginService.getUser()
+    newArticle.setUserID(user.user);
 
-      let newArticle = new MyArticle(this.article);
-      console.log(newArticle);
-    } else {
-      console.log("Edition is true");
-    }
+    console.log(newArticle);
+    // this.newsService.createArticle(newArticle);
   }
 
 }
