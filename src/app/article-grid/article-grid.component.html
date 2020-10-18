@@ -62,6 +62,51 @@
         </div>
     </div>
 
+    <div class="dropdown">
+        <span>
+            <button class="btn btn-primary">
+                Filters
+            </button>
+        </span>
+        <div class="dropdown-content">
+            <button mat-button 
+                class="nav-btn"
+                (click)="filterArticles(0)">
+                All articles
+            </button>
+            <button mat-button 
+                class="nav-btn"
+                (click)="filterArticles(1)">
+                National
+            </button>
+            <button mat-button 
+                class="nav-btn"
+                (click)="filterArticles(2)">
+                Economy
+            </button>
+            <button mat-button 
+                class="nav-btn"
+                (click)="filterArticles(3)">
+                Sports
+            </button>
+            <button mat-button 
+                class="nav-btn"
+                (click)="filterArticles(4)">
+                Technology
+            </button>
+
+            <br>
+
+            <div class="article-filter">
+                <input type="text"
+                class="lead article-filter-input"
+                name="content"
+                [(ngModel)]="content"
+                placeholder="Specific content you're looking for...">
+            </div>
+        </div>
+    </div>
+
     <br>
     <br>
 

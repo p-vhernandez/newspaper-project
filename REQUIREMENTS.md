@@ -29,7 +29,7 @@
 - ~~The article details must be shown with its title, subtitle, abstract, category, body and picture (if it is included in the article).~~
 - The modification date and the username who have modified the content must be shown at the end of the details page. **- CHANGE USER ID FOR USERNAME**
 - ~~Articles cannot be modified in the details view~~
-- As the article body is written in HTML, its content must be properly shown by the application **- MUST BE REVIEWED. NOW WE "CLEAN" ABSTRACT AND BODY TO GET RID OF HTML TAGS**
+- ~~As the article body is written in HTML, its content must be properly shown by the application.~~
 
 
 **Article edition and creation**
@@ -46,10 +46,10 @@ the form information added by the user.
 
 **Other tasks**
 - ~~When the user is logged in, show the "welcome, xxxx" message next to the "log out" button.~~
-- When the user logs out, we have to figure out how to reload the page content in order to:
-  - Change the "log out" button for the "log in" one. 
-  - Unshow the "welcome, xxxx" message
-  - Unshow the edit and delete buttons from the articles.
+- ~~When the user logs out, we have to figure out how to reload the page content in order to:~~
+  - ~~Change the "log out" button for the "log in" one.~~ 
+  - ~~Unshow the "welcome, xxxx" message~~
+  - ~~Unshow the edit and delete buttons from the articles.~~
 - Delete article functionality.
 - Finish error catch in services.
 - New article form functionality - unfinished.
