@@ -1,116 +1,105 @@
-<div class="article-form">
+<form #articleForm="ngForm" (ngSubmit)="sendArticle()"
+      class="article-form">
+    <div class="form-group">
+        <label>Title *</label>
+        <input class="form-control"
+               [(ngModel)]="article.title" 
+               [ngClass]="atitle.valid || atitle.pristine ? '': 'form-error'"
+               type="text"
+               required
+               placeholder="Article title"
+               name="atitle" 
+               #atitle="ngModel">
+    </div>
 
-    <form #articleForm="ngForm" (ngSubmit)="sendArticle()">
-        <div class="form-group">
-            <label class="form-label">Title *</label>
-            <input class="form-control"
-                   [(ngModel)]="article.title"
-                   [ngClass]="atitle.valid || atitle.pristine ? '': 'form-error'"
-                   type="text" 
-                   placeholder="Article title"
-                   required
-                   name="atitle"
-                   #atitle="ngModel">
+    <div class="alert alert-danger" *ngIf="atitle.touched && !atitle.valid">
+        <div *ngIf="atitle.errors.required">
+            <p class="error-msg">The article title is required.</p>
         </div>
+    </div>
 
-        <div class="alert alert-danger" *ngIf="atitle.touched && !atitle.valid">
-            <div *ngIf="atitle.errors.required">
-                <p class="error-msg">The article title is required.</p>
-            </div>
+    <div class="form-group">
+        <label>Subtitle *</label>
+        <input class="form-control"
+               [(ngModel)]="article.subtitle" 
+               [ngClass]="asubtitle.valid || asubtitle.pristine ? '': 'form-error'"
+               type="text"
+               required
+               placeholder="Article subtitle"
+               name="asubtitle" 
+               #asubtitle="ngModel">
+    </div>
+
+    <div class="alert alert-danger" *ngIf="asubtitle.touched && !asubtitle.valid">
+        <div *ngIf="asubtitle.errors.required">
+            <p class="error-msg">The article subtitle is required.</p>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label class="form-label">Subtitle *</label>
-            <input class="form-control"
-                   [(ngModel)]="article.subtitle"
-                   [ngClass]="asubtitle.valid || asubtitle.pristine ? '': 'form-error'"
-                   type="text" 
-                   placeholder="Article subtitle"
-                   required
-                   name="asubtitle"
-                   #asubtitle="ngModel">
+    <div class="form-group">
+        <label class="form-label">Category *</label>
+        <select class="custom-select my-1 mr-sm-2"
+                [(ngModel)]="article.category"  
+                name="acategory" 
+                #acategory="ngModel"
+                id="inlineFormCustomSelectPref"
+                required>
+            <option value="" disabled selected>Choose the article's category...</option>
+            <option value="National">National</option>
+            <option value="Economy">Economy</option>
+            <option value="Sports">Sports</option>
+            <option value="Technology">Technology </option>
+        </select>
+    </div>
+
+    <div class="alert alert-danger" *ngIf="acategory.touched && !acategory.valid">
+        <div *ngIf="acategory.errors.required">
+            <p class="error-msg">The article category is required.</p>
         </div>
+    </div>
 
-        <div class="alert alert-danger" *ngIf="asubtitle.touched && !asubtitle.valid">
-            <div *ngIf="asubtitle.errors.required">
-                <p class="error-msg">The article subtitle is required.</p>
-            </div>
+    <div class="form-group">
+        <label>Abstract *</label>
+        <input class="form-control"
+               [(ngModel)]="article.abstract" 
+               [ngClass]="aabstract.valid || aabstract.pristine ? '': 'form-error'"
+               type="text"
+               required
+               placeholder="Article abstract"
+               name="aabstract" 
+               #aabstract="ngModel">
+    </div>
+
+    <div class="alert alert-danger" *ngIf="aabstract.touched && !aabstract.valid">
+        <div *ngIf="aabstract.errors.required">
+            <p class="error-msg">The article abstract is required.</p>
         </div>
+    </div>
 
-        <div class="form-group">
-            <label class="form-label">Category *</label>
-            <select class="custom-select my-1 mr-sm-2" 
-                    id="inlineFormCustomSelectPref">
-                <option selected>Choose...</option>
-                <option value="1">National</option>
-                <option value="2">Economy</option>
-                <option value="3">Sports</option>
-                <option value="4">Technology </option>
-            </select>
-        </div>
+    <div class="form-group">
+        <label>Bogy</label>
+        <textarea class="form-control"
+               type="text"
+               [(ngModel)]="article.body" 
+               name="abody" 
+               rows="5"
+               #abody="ngModel"
+               placeholder="Article body"> </textarea>
+    </div>
 
-        <!-- <div class="alert alert-danger" *ngIf="asubtitle.touched && !asubtitle.valid">
-            <div *ngIf="asubtitle.errors.required">
-                <p class="error-msg">The article subtitle is required.</p>
-            </div>
-        </div> -->
+    <div class="form-buttons">
+        <button [routerLink]="['/articleGrid']"
+                class="cancel-btn"
+                mat-button>
+            Cancel
+        </button>
 
-        <div class="form-group">
-            <label class="form-label upload-image-label">Upload image </label>
-            <!-- TODO: image upload -->
-        </div>
-
-        <div class="form-group">
-            <label class="form-label">Abstract *</label>
-            <input class="form-control"
-                   [(ngModel)]="article.abstract"
-                   [ngClass]="aabstract.valid || aabstract.pristine ? '': 'form-error'"
-                   type="text" 
-                   placeholder="Article abstract"
-                   required
-                   name="aabstract"
-                   #aabstract="ngModel">
-        </div>
-
-        <div class="alert alert-danger" *ngIf="aabstract.touched && !aabstract.valid">
-            <div *ngIf="aabstract.errors.required">
-                <p class="error-msg">The article subtitle is required.</p>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="form-label">Body *</label>
-            <input class="form-control"
-                   [(ngModel)]="article.abstract"
-                   [ngClass]="abody.valid || abody.pristine ? '': 'form-error'"
-                   type="text" 
-                   placeholder="Article body"
-                   required
-                   name="abody"
-                   #abody="ngModel">
-        </div>
-
-        <div class="alert alert-danger" *ngIf="abody.touched && !abody.valid">
-            <div *ngIf="abody.errors.required">
-                <p class="error-msg">The article subtitle is required.</p>
-            </div>
-        </div>
-
-        <div class=form-buttons>
-            <button class="form-button cancel-btn btn"
-                    mat-flat-button
-                    [routerLink]="['/articleGrid']"> 
-                Cancel
-            </button>
-
-            <button type="submit"
-                    [disabled]="!articleForm.form.valid"
-                    class="form-button submit-btn btn"
-                    mat-flat-button> 
-                Create article 
-            </button>
-        </div>
-
-    </form>
-
-</div>
+        <button type="submit"
+                *ngIf="edition"
+                [disabled]="!articleForm.form.valid"
+                class="submit-btn"
+                mat-button>
+            Create new article
+        </button>
+    </div>
+</form>

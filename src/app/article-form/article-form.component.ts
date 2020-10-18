@@ -19,7 +19,19 @@ export class ArticleFormComponent implements OnInit {
 
   constructor(private newsService: NewsService, 
               private route: ActivatedRoute) { 
-    this.article = null;
+    this.article = {
+      id: null,
+      id_user: null,
+      title: '',
+      subtitle: '',
+      abstract: '',
+      update_date: null,
+      category: '',
+      body: '',
+      is_deleted: false,
+      is_public: true
+    };
+
     this.edition = false;
   }
 
@@ -38,11 +50,7 @@ export class ArticleFormComponent implements OnInit {
   }
 
   sendArticle(): void {
-
-  }
-
-  editArticle(): void {
-
+    
   }
 
 }

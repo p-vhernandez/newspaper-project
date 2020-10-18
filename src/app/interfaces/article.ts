@@ -1,5 +1,5 @@
 export interface Article {
-    id: number;
+    id?: number;
     id_user: number;
     is_public: boolean;
     is_deleted: boolean;

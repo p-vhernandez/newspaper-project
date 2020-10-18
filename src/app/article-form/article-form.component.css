@@ -1,27 +1,47 @@
-.form-buttons {
-    width: 100%;
+.article-form {
+    width: 80%;
     margin: auto;
-    margin-top: 8%;
 }
 
-.form-button {
+.form-error {
+    background-color: #ffb3b3;
+}
+
+.form-error::placeholder,
+option:disabled {
+    color: gray !important;
+}
+
+.form-error:focus {
+    border-color: #ff6666;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25) inset, 0 0 8px rgba(255, 102, 102, 0.6);
+}
+
+.form-buttons {
+    margin-top: 5%;
+}
+
+.cancel-btn, 
+.submit-btn {
     width: 48%;
     margin: auto;
 }
 
 .cancel-btn {
     border: 1px solid black;
-    font-size: 'Work Sans' !important;
-}
-
-.cancel-btn:hover {
-    background-color: black;
-    color: white;
 }
 
 .submit-btn {
-    float: right;
     background-color: black;
-    color: white;
-    border: 1px solid black;
+    color: white !important;
+    float: right;
 }
+
+::placeholder {
+    color: lightgray
+}
+
+button:disabled {
+    background-color: lightgray;
+    border-color: lightgray;
+}   
