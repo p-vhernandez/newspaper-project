@@ -5,11 +5,13 @@
            *ngIf="user != null">Welcome back, {{ user.username }}</p>
         <button class="btn btn-primary mr-2 login-btn"
                 *ngIf="user == null"
+                mat-button
                 [routerLink]="['/loginForm']">
             Login
         </button>
         <button class="btn btn-primary mr-2 login-btn"
                 *ngIf="user != null"
+                mat-button
                 (click)="userLogout()">
             Log out
         </button>
@@ -64,8 +66,10 @@
 
     <div class="dropdown">
         <span>
-            <button class="btn btn-primary">
-                Filters
+            <button class="filter-button">
+                <img src="../../assets/images/filtrar.png" 
+                     alt="Filter articles"
+                     class="filter-icon">
             </button>
         </span>
         <div class="dropdown-content">
@@ -99,10 +103,10 @@
 
             <div class="article-filter">
                 <input type="text"
-                class="lead article-filter-input"
-                name="content"
-                [(ngModel)]="content"
-                placeholder="Specific content you're looking for...">
+                       class="lead article-filter-input"
+                       name="content"
+                       [(ngModel)]="content"
+                       placeholder="Filter content...">
             </div>
         </div>
     </div>
