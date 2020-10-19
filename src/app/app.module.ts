@@ -10,9 +10,10 @@ import { ArticleViewerComponent } from './article-viewer/article-viewer.componen
 import { ArticleGridComponent } from './article-grid/article-grid.component';
 import { ArticleFormComponent } from './article-form/article-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
-import { DialogBodyComponent } from './dialog-body/dialog-body.component';
 import { ArticleFilterPipe } from './pipes/article-filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { DialogDeleteArticleComponent } from './dialog-delete-article/dialog-delete-article.component';
+import { DialogLoginComponent } from './dialog-login/dialog-login.component';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -28,8 +29,9 @@ import { from } from 'rxjs';
     ArticleGridComponent,
     ArticleFormComponent,
     LoginFormComponent,
-    DialogBodyComponent,
-    ArticleFilterPipe
+    ArticleFilterPipe,
+    DialogDeleteArticleComponent,
+    DialogLoginComponent
   ],
   imports: [
     BrowserModule,

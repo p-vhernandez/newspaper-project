@@ -5,7 +5,7 @@ import { User } from '../interfaces/user';
 import { LoginService } from '../services/login-service/login.service';
 import { NewsService } from '../services/news-service/news.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
+import { DialogDeleteArticleComponent } from '../dialog-delete-article/dialog-delete-article.component';
 import { ArticleFilterPipe } from '../pipes/article-filter.pipe';
 
 @Component({
@@ -70,7 +70,7 @@ export class ArticleGridComponent implements OnInit {
       "articleID": articleID
     };
     
-    this.deleteDialog.open(DialogBodyComponent, dialogConfig);
+    this.deleteDialog.open(DialogDeleteArticleComponent, dialogConfig);
   }
 
   filterArticles(filter: number): void {

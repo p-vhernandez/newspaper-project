@@ -25,7 +25,25 @@
     margin-bottom: 2%;
 }
 
+button:disabled {
+    background-color: lightgray;
+    border-color: lightgray;
+} 
+
+.submit-button {
+    background-color: black;
+    color: white !important;
+}
+
 .cancel-button {
-    border-color: darkslategrey;
-    background-color: darkslategrey;
+    border: 1px solid black;
+}
+
+.cancel-button:hover {
+    background-color: black;
+    color: white;
+}
+
+.form-buttons {
+    margin-bottom: 5%;
 }

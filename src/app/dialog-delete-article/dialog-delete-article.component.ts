@@ -3,15 +3,16 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NewsService } from '../services/news-service/news.service';
 
 @Component({
-  selector: 'app-dialog-body',
-  templateUrl: './dialog-body.component.html',
-  styleUrls: ['./dialog-body.component.css']
+  selector: 'app-dialog-delete-article',
+  templateUrl: './dialog-delete-article.component.html',
+  styleUrls: ['./dialog-delete-article.component.css']
 })
-export class DialogBodyComponent implements OnInit {
+
+export class DialogDeleteArticleComponent implements OnInit {
 
   articleID: number;
 
-  constructor(private dialogRef: MatDialogRef<DialogBodyComponent>,
+  constructor(private dialogRef: MatDialogRef<DialogDeleteArticleComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private newsService: NewsService) {
     this.articleID = data.articleID;

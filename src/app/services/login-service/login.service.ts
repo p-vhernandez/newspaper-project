@@ -34,8 +34,7 @@ export class LoginService {
       .set('passwd', pwd);
 
     return this.http.post<User>(this.loginURL, usereq).pipe(
-      tap(user => { this.user = user; }),
-      catchError(this.handleError<User>('login', null))
+      tap(user => { this.user = user; })
     );
   }
 
