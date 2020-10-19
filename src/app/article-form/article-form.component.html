@@ -46,7 +46,6 @@
                 <option value="2">Economy</option>
                 <option value="3">Sports</option>
                 <option value="4">Technology </option>
-                <option value="5">All </option>
             </select>
         </div>
 
@@ -63,14 +62,14 @@
 
         <div class="form-group">
             <label class="form-label">Abstract *</label>
-            <input class="form-control"
-                   [(ngModel)]="article.abstract"
-                   [ngClass]="aabstract.valid || aabstract.pristine ? '': 'form-error'"
-                   type="text" 
-                   placeholder="Article abstract"
-                   required
-                   name="aabstract"
-                   #aabstract="ngModel">
+            <textarea class="form-control"
+                    [(ngModel)]="article.abstract"
+                    [ngClass]="aabstract.valid || aabstract.pristine ? '': 'form-error'"
+                    placeholder="Article abstract"
+                    required
+                    name="aabstract"
+                    rows="3"
+                    #aabstract="ngModel"></textarea>
         </div>
 
         <div class="alert alert-danger" *ngIf="aabstract.touched && !aabstract.valid">
@@ -81,19 +80,19 @@
 
         <div class="form-group">
             <label class="form-label">Body *</label>
-            <input class="form-control"
-                   [(ngModel)]="article.abstract"
-                   [ngClass]="abody.valid || abody.pristine ? '': 'form-error'"
-                   type="text" 
-                   placeholder="Article body"
-                   required
-                   name="abody"
-                   #abody="ngModel">
+            <textarea class="form-control"
+                    [(ngModel)]="article.body"
+                    [ngClass]="abody.valid || abody.pristine ? '': 'form-error'"
+                    placeholder="Article body"
+                    required
+                    name="abody"
+                    rows="7"
+                    #abody="ngModel"></textarea>
         </div>
 
         <div class="alert alert-danger" *ngIf="abody.touched && !abody.valid">
             <div *ngIf="abody.errors.required">
-                <p class="error-msg">The article subtitle is required.</p>
+                <p class="error-msg">The article body is required.</p>
             </div>
         </div>
 
@@ -108,7 +107,7 @@
                     [disabled]="!articleForm.form.valid"
                     class="form-button submit-btn btn"
                     mat-flat-button> 
-                Send email 
+                Save Article 
             </button>
         </div>
 
