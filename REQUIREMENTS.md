@@ -33,10 +33,10 @@
 
 
 **Article edition and creation**
-- The form must include all input to edit/create the article, that is: title, subtitle, abstract, body and image selection.
+- ~~The form must include all input to edit/create the article, that is: title, subtitle, abstract, body and image selection.~~
 - The categories must be selected in a combo with values: National, Economy, Sports and Technology.
 - Body can be fill in HTML format (a WYSIWYG editor can be used).
-- All inputs of the form (except the image) are mandatory and the form must be validated.
+- All inputs of the form (except the body) are mandatory and the form must be validated.
 - ~~This form must include a button to come back to the main page and another button to save/create the form information added by the user.~~
 - Saving information must give some feedback to the user with the result of the operation
 
@@ -50,6 +50,7 @@
 - Delete article functionality.
 - Finish error catch in services.
 - New article form functionality - unfinished.
+- Image input functionality -> not working.
 
 
 **Handy links**
