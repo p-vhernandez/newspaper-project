@@ -21,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';
 import { from } from 'rxjs';
+import { DialogArticleFormComponent } from './dialog-article-form/dialog-article-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { from } from 'rxjs';
     LoginFormComponent,
     ArticleFilterPipe,
     DialogDeleteArticleComponent,
-    DialogLoginComponent
+    DialogLoginComponent,
+    DialogArticleFormComponent
   ],
   imports: [
     BrowserModule,

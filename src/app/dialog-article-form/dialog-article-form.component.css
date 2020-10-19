@@ -1,0 +1,25 @@
+.login-dialog-title,
+.login-dialog-content,
+.login-dialog-actions {
+    font-family: 'Work Sans';
+}
+
+.login-dialog-title {
+    color: "#ff1a1a" !important;
+}
+
+.login-dialog-actions {
+    float: right;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.dismiss-btn {
+    margin-right: 10px;
+    border: none !important;
+}
+
+.dismiss-btn:hover {
+    background-color: black;
+    color: white !important;
+}

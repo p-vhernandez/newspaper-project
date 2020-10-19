@@ -6,7 +6,6 @@ import { LoginService } from '../services/login-service/login.service';
 import { NewsService } from '../services/news-service/news.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogDeleteArticleComponent } from '../dialog-delete-article/dialog-delete-article.component';
-import { ArticleFilterPipe } from '../pipes/article-filter.pipe';
 
 @Component({
   selector: 'app-article-grid',
@@ -18,7 +17,6 @@ export class ArticleGridComponent implements OnInit {
   user: User;
   allArticles: Article[];
   articlesToShow: Article[];
-  private message: string;
   content: string;
 
   constructor(private newsService: NewsService,
@@ -51,12 +49,9 @@ export class ArticleGridComponent implements OnInit {
       news => {
         this.allArticles = news;
         this.articlesToShow = this.allArticles;
-        this.message = null;
-        console.log(this.allArticles);
       },
       err => {
         this.allArticles = null;
-        this.message = `An error has ocurred: ${err.statusText}`
       },
       () => {
         console.log('Get news operation finished');
