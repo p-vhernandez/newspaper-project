@@ -63,8 +63,9 @@
 .article-title,
 .article-subtitle,
 .article-abstract,
-.article-viewer-btn {
-    text-align: center;
+.article-viewer-btn,
+.detailed-info {
+    text-align: center !important;
     font-family: 'Georgia';
 }
 
@@ -78,6 +79,10 @@
     color: black;
     text-decoration: underline;
     padding: 1%;
+}
+
+.detailed-info {
+    margin-top: 8%;
 }
 
 .action-btns {

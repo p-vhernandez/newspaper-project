@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class DialogArticleFormComponent implements OnInit {
 
   isError: boolean;
+  isDeleted: boolean;
+
   error: any;
   errorType: number;
   dialogTitle: string;
@@ -17,6 +19,8 @@ export class DialogArticleFormComponent implements OnInit {
 
   private ARTICLE_CREATED_TITLE: string = "Article created";
   private ARTICLE_CREATED_MSG: string = "The article has been successfully created.";
+  private ARTICLE_DELETED_TITLE: string = "Article deleted";
+  private ARTICLE_DELETED_MSG: string = "The article has been successfully deleted.";
 
   constructor(private dialogRef: MatDialogRef<DialogArticleFormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
@@ -26,8 +30,15 @@ export class DialogArticleFormComponent implements OnInit {
     if (this.isError) {
       this.error = data.error;
     } else {
-      this.dialogTitle = this.ARTICLE_CREATED_TITLE;
-      this.dialogMessage = this.ARTICLE_CREATED_MSG;
+      this.isDeleted = data.isDeleted;
+
+      if (this.isDeleted) {
+        this.dialogTitle = this.ARTICLE_DELETED_TITLE;
+        this.dialogMessage = this.ARTICLE_DELETED_MSG;
+      } else {
+        this.dialogTitle = this.ARTICLE_CREATED_TITLE;
+        this.dialogMessage = this.ARTICLE_CREATED_MSG;
+      }
     }
   }
 

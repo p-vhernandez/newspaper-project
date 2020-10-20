@@ -9,9 +9,9 @@ export interface Article {
     category: string;
     title: string;
     body?: string;
-    image_data?: string;
+    image_data: string;
     image_description?: string;
-    image_media_type?: string;
+    image_media_type: string;
     thumbnail_image?: string;
     thunmbnail_media_type?: string;
 }

@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogArticleFormComponent } from '../dialog-article-form/dialog-article-form.component';
+import { Article } from '../interfaces/article';
 import { NewsService } from '../services/news-service/news.service';
 
 @Component({
@@ -11,11 +13,18 @@ import { NewsService } from '../services/news-service/news.service';
 export class DialogDeleteArticleComponent implements OnInit {
 
   articleID: number;
+  articleToDelete: Article;
+
+  error: any;
+  article: Article;
 
   constructor(private dialogRef: MatDialogRef<DialogDeleteArticleComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
-              private newsService: NewsService) {
+              private newsService: NewsService,
+              private articleDialog: MatDialog) {
+                
     this.articleID = data.articleID;
+    this.getArticle();
   }
 
   ngOnInit(): void { }
@@ -24,10 +33,57 @@ export class DialogDeleteArticleComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  getArticle() {
+    this.newsService.getArticleByID(this.articleID).subscribe(
+      article => {
+        this.articleToDelete = article;
+        console.log(this.articleToDelete);
+      },
+      err => {
+        console.log(err);
+      },
+      () => {
+        console.log('Get article by ID operation finished.');
+      }
+    );
+  }
+
   deleteArticle(): void {
     console.log("Delete article selected: " + this.articleID);
-    // this.newsService.deleteArticle(this.articleID);
-    // this.dialogRef.close();
+    this.newsService.deleteArticle(this.articleToDelete).subscribe(
+      deletedArticle => {
+        this.article = deletedArticle;
+        this.dialogRef.close();
+        this.showDeleteArticleMessage(null);
+      }, 
+      err => {
+        this.error = err;
+        console.log(this.error);
+      },
+      () => {
+        console.log('Delete article operation finished.')
+      }
+    );
+  }
+
+  showDeleteArticleMessage(err: any): void {
+    const dialogConfig = new MatDialogConfig();
+
+    if (err == null) {
+      // Delete operation succeeded
+      dialogConfig.data = {
+        "isError": false,
+        "isDeleted": true,
+      }
+    } else {
+      // Delete operation failed
+      dialogConfig.data = {
+        "isError": true,
+        "error": err
+      }
+    }
+
+    this.articleDialog.open(DialogArticleFormComponent, dialogConfig);
   }
 
 }

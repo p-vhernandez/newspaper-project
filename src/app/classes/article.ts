@@ -11,10 +11,11 @@ export class MyArticle implements Article {
     category: string;
     title: string;
     body?: string;
-    image_data?: string;
-    image_media_type?: string;
+    image_data: string;
+    image_media_type: string;
 
     constructor(articleInterface: Article) {
+        this.title = articleInterface.title;
         this.is_public = articleInterface.is_public;
         this.is_deleted = articleInterface.is_deleted;
         this.abstract = articleInterface.abstract;

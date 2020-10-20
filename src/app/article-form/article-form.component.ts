@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MyArticle } from '../classes/article';
+import { DialogArticleFormComponent } from '../dialog-article-form/dialog-article-form.component';
 import { Article } from '../interfaces/article';
 import { LoginService } from '../services/login-service/login.service';
 import { NewsService } from '../services/news-service/news.service';
@@ -22,7 +24,8 @@ export class ArticleFormComponent implements OnInit {
   cardImageBase64: any;
   isImageSaved: boolean;
 
-  constructor(private newsService: NewsService) { 
+  constructor(private newsService: NewsService,
+              private articleDialog: MatDialog) { 
     this.article = {
       title: '',
       subtitle: '',
@@ -31,7 +34,9 @@ export class ArticleFormComponent implements OnInit {
       category: '',
       body: '',
       is_deleted: false,
-      is_public: true
+      is_public: true,
+      image_data: undefined,
+      image_media_type: undefined
     };
   }
 
@@ -44,38 +49,40 @@ export class ArticleFormComponent implements OnInit {
     newArticle.setImageData(this.article.image_data);
     newArticle.setImageMediaType(this.article.image_media_type);
 
-    console.log(newArticle);
-    // this.newsService.createArticle(newArticle).subscribe(
-    //   article => {
-    //     this.showArticleMessage(null);
-    //   },
-    //   err => {
-    //     this.articleForm.resetForm();
-    //     this.showArticleMessage(err);
-    //   },
-    //   () => {
-    //     console.log('Create article operation finished');
-    //   }
-    // )
+    this.newsService.createArticle(newArticle).subscribe(
+      article => {
+        this.article = article;
+        this.articleForm.resetForm();
+        this.showArticleMessage(null);
+      },
+      err => {
+        this.articleForm.resetForm();
+        console.log(err);
+        // this.showArticleMessage(err);
+      },
+      () => {
+        console.log('Create article operation finished');
+      }
+    )
   }
 
-  fileChangeEvent(fileInput: any) {
+  fileChangeEvent(imageInput: any) {
     this.imageError = null;
 
-    if (fileInput?.target.files && fileInput?.target.files[0]) {
+    if (imageInput.files && imageInput.files[0]) {
       // Size Filter Bytes
       const MAX_SIZE = 20971520;
       const ALLOWED_TYPES = ['image/png', 'image/jpeg'];
 
-      if (fileInput?.target.files[0].size > MAX_SIZE) {
+      if (imageInput.files[0].size > MAX_SIZE) {
         this.imageError = 'Maximum size allowed is ' + MAX_SIZE / 1000 + 'Mb';
         return false;
       }
 
-      if (!_.includes(ALLOWED_TYPES, fileInput.target.files[0].type)) {
-        this.imageError = 'Only Images are allowed ( JPG | PNG )';
-        return false;
-      }
+      // if (!_.includes(ALLOWED_TYPES, fileInput.target.files[0].type)) {
+      //   this.imageError = 'Only Images are allowed ( JPG | PNG )';
+      //   return false;
+      // }
 
       const reader = new FileReader();
       reader.onload = (e: any) => {
@@ -86,23 +93,30 @@ export class ArticleFormComponent implements OnInit {
           this.cardImageBase64 = imgBase64Path;
           this.isImageSaved = true;
 
-          this.article.image_media_type = fileInput.target.files[0].type;
+          this.article.image_media_type = imageInput.files[0].type;
           const head = this.article.image_media_type.length + 13;
           this.article.image_data = e.target.result.substring(head, e.target.result.length);
         };
       };
 
-      reader.readAsDataURL(fileInput.target.files[0]);
+      reader.readAsDataURL(imageInput.files[0]);
     }
   }
 
   showArticleMessage(err: any): void {
+    const dialogConfig = new MatDialogConfig();
 
     if (err == null) {
-
+      // Creation operation succeeded
+      dialogConfig.data = {
+        "isError": false,
+        "isDeleted": false,
+      }
     } else {
-
+      // Creation operation failed 
     }
+
+    this.articleDialog.open(DialogArticleFormComponent, dialogConfig);
   }
 
 }
