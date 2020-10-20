@@ -47,10 +47,11 @@
   - ~~Change the "log out" button for the "log in" one. ~~
   - ~~Hide the "welcome, xxxx" message~~
   - ~~Hide the edit and delete buttons from the articles.~~
-- Delete article functionality.
+- ~~Delete article functionality.~~
 - Finish error catch in services.
-- New article form functionality - unfinished.
-- Image input functionality -> not working.
+- ~~New article form functionality - unfinished.~~
+- ~~Image input functionality -> not working.~~
+- Refresh article array after deleting an article.
 
 
 **Handy links**
