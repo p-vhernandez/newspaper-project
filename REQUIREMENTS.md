@@ -51,7 +51,7 @@
 **Other tasks**
 - ~~When the user is logged in, show the "welcome, xxxx" message next to the "log out" button.~~
 - ~~When the user logs out, we have to figure out how to reload the page content in order to:~~
-  - ~~Change the "log out" button for the "log in" one. ~~
+  - ~~Change the "log out" button for the "log in" one~~
   - ~~Hide the "welcome, xxxx" message~~
   - ~~Hide the edit and delete buttons from the articles.~~
 - ~~Delete article functionality.~~
