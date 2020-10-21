@@ -3,31 +3,43 @@
 <br>
 <br>
 
-<div class="login-form">
-    <input class="input-username"
-           [(ngModel)]="username"
-           type="text" 
-           #lusername="ngModel"
-           placeholder="username"
-           name="lusername"
-           #lusername="ngModel"
-           required>
+<form #loginForm="ngForm" (ngSubmit)="userLogin()"
+      class="login-form">
+       <div class="form-group">
+              <label class="lead">Username *</label>
+              <input class="input-username"
+                     [(ngModel)]="username"
+                     type="text" 
+                     #lusername="ngModel"
+                     placeholder="username"
+                     name="lusername"
+                     #lusername="ngModel"
+                     required>
+       </div>
 
-    <input class="input-password"
-           [(ngModel)]="password"
-           type="password" 
-           placeholder="password"
-           name="lpassword"
-           #lpassword="ngModel"
-           required>  
+       <div class="form-group">
+              <label class="lead">Password *</label>
+              <input class="input-password"
+                     [(ngModel)]="password"
+                     type="password" 
+                     placeholder="password"
+                     name="lpassword"
+                     #lpassword="ngModel"
+                     required>
+       </div>
 
-    <button class="input-button btn btn-primary mr-2"
-            (click)=userLogin()>
-      Login
-    </button>
+       <div class="form-buttons">
+              <button class="input-button submit-button"
+                      mat-button
+                      type="submit"
+                      [disabled]="!loginForm.form.valid">
+                     Login
+              </button>
 
-    <button class="input-button cancel-button btn btn-primary mr-2"
-            [routerLink]="'/articleGrid'">
-      Cancel
-    </button>
-</div>
+              <button class="input-button cancel-button"
+                      mat-button
+                      [routerLink]="'/articleGrid'">
+                     Cancel
+              </button>
+       </div>
+</form>

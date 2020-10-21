@@ -2,14 +2,16 @@
 
     <div class="user">
         <p class="user-welcome"
-           *ngIf="user != null">Welcome back, {{ user.username }}</p>
+           *ngIf="user != null">Welcome back, {{ user.username }}!</p>
         <button class="btn btn-primary mr-2 login-btn"
                 *ngIf="user == null"
+                mat-button
                 [routerLink]="['/loginForm']">
             Login
         </button>
         <button class="btn btn-primary mr-2 login-btn"
                 *ngIf="user != null"
+                mat-button
                 (click)="userLogout()">
             Log out
         </button>
@@ -64,8 +66,10 @@
 
     <div class="dropdown">
         <span>
-            <button class="btn btn-primary">
-                Filters
+            <button class="filter-button">
+                <img src="../../assets/images/filtrar.png" 
+                     alt="Filter articles"
+                     class="filter-icon">
             </button>
         </span>
         <div class="dropdown-content">
@@ -99,10 +103,10 @@
 
             <div class="article-filter">
                 <input type="text"
-                class="lead article-filter-input"
-                name="content"
-                [(ngModel)]="content"
-                placeholder="Specific content you're looking for...">
+                       class="lead article-filter-input"
+                       name="content"
+                       [(ngModel)]="content"
+                       placeholder="Filter content...">
             </div>
         </div>
     </div>
@@ -114,6 +118,8 @@
          class="article-card">
         <mat-card class="article"
                   *ngFor="let article of articlesToShow | articleFilter:content">
+        <!-- <mat-card class="article"
+                  *ngFor="let article of articlesToShow"> -->
             <div *ngIf="article.is_deleted == 0">
                 <mat-card-content class="article-content">
                     <a href="/articleViewer?article={{ article.id }}">
@@ -130,14 +136,22 @@
                     <div class="article-abstract" 
                          [innerHTML]="article.abstract"> </div>
                     
-                    <a href="/articleViewer?article={{ article.id }}">
+                    <p class="detailed-info">{{ article.category }} · 
+                        <a href="/articleViewer?article={{ article.id }}"
+                           class="article-viewer-btn"> 
+                            Read more
+                        </a>
+                    </p>
+                    <!-- <a href="/articleViewer?article={{ article.id }}">
                         <p class="article-viewer-btn">Read more</p>
-                    </a>
+                    </a> -->
                 </mat-card-content>
 
                 <mat-card-actions class="action-btns">
                     <button mat-button
-                            *ngIf="user != null">
+                            *ngIf="user != null"
+                            [routerLink]="['/articleForm']"
+                            [queryParams]="{'articleID': article.id}">
                         <i class="material-icons md-18">edit</i>
                         Edit article
                     </button>

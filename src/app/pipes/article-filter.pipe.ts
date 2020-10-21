@@ -5,7 +5,7 @@ import { Article } from '../interfaces/article';
 export class ArticleFilterPipe implements PipeTransform {
     transform(articlesToShow: Array<Article>, searchText: string): Array<Article> {
         searchText = searchText.toLowerCase();
-        return articlesToShow.filter(article => {
+        return articlesToShow?.filter(article => {
             return article.title.toLowerCase().includes(searchText) 
                     || article.subtitle.toLowerCase().includes(searchText) 
                     || article.abstract.toLowerCase().includes(searchText);

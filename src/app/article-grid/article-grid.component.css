@@ -9,6 +9,8 @@
 
 .login-btn {
     float: right;
+    background-color: black;
+    color: white;
 }
 
 .new-article {
@@ -61,8 +63,9 @@
 .article-title,
 .article-subtitle,
 .article-abstract,
-.article-viewer-btn {
-    text-align: center;
+.article-viewer-btn,
+.detailed-info {
+    text-align: center !important;
     font-family: 'Georgia';
 }
 
@@ -78,11 +81,9 @@
     padding: 1%;
 }
 
-/* .article-viewer-btn:hover {
-    background-color: black;
-    color: white;
-    text-decoration: underline white;
-} */
+.detailed-info {
+    margin-top: 8%;
+}
 
 .action-btns {
     float: right;
@@ -121,21 +122,41 @@
 
 /*If screen is narrower than 600 px (i.e. mobile) the filtering tab is
 presented as a dropdown menu instead*/
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 995px) {
     .news-navigation {
         display: none;
     }
     .dropdown {
         display: inline-block;
     }
-  }
 
-.nav-btn {
-    margin-right: 1% !important;
+    .article-filter-input {
+        margin-top: 2%;
+        width: 100% !important;
+    }
+
+    .nav-btn {
+        width: 100% !important;
+        text-align: left !important;
+        margin-right: 1% !important;
+    }
+}
+
+.dropdown-content {
+    min-width: 250px !important;
+}
+
+.filter-button {
+    border: 0;
+    background-color: white;
+}
+
+.filter-icon {
+    width: 30px;
 }
 
 .article-filter {
-    width: 200px;
+    width: 100% !important;
     margin-bottom: 0;
     overflow: hidden;
     display: contents;
@@ -163,7 +184,7 @@ presented as a dropdown menu instead*/
 }
 
 .article-filter-input::content {
-    padding-left: 2%;
+    padding-left: 1%;
 }
 
 .action-filter {

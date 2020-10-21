@@ -5,8 +5,8 @@ import { User } from '../interfaces/user';
 import { LoginService } from '../services/login-service/login.service';
 import { NewsService } from '../services/news-service/news.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
-import { ArticleFilterPipe } from '../pipes/article-filter.pipe';
+import { DialogDeleteArticleComponent } from '../dialog-delete-article/dialog-delete-article.component';
+import { ArticleDeletedService } from '../services/article-deleted-service/article-deleted-service';
 
 @Component({
   selector: 'app-article-grid',
@@ -18,21 +18,27 @@ export class ArticleGridComponent implements OnInit {
   user: User;
   allArticles: Article[];
   articlesToShow: Article[];
-  private message: string;
   content: string;
 
   constructor(private newsService: NewsService,
               private loginService: LoginService,
               private router: Router,
-              private deleteDialog: MatDialog) {
+              private deleteDialog: MatDialog,
+              private articleDeletedService: ArticleDeletedService) {
       this.content = "";
   }
 
   ngOnInit(): void { 
     this.checkUserLoggedIn();
     this.downloadNews();
-  }
 
+    this.articleDeletedService.deleted.subscribe(updateNews => {
+      if (updateNews) {
+        this.downloadNews();
+      }
+    });
+  }
+  
   checkUserLoggedIn(): void {
     if (this.loginService.isLogged()) {
       this.user = this.loginService.getUser();
@@ -43,7 +49,7 @@ export class ArticleGridComponent implements OnInit {
 
   userLogout(): void {
     this.loginService.logout();
-    // TODO: reload content (unshow buttons, change button, etc)
+    this.user = this.loginService.getUser();
   }
 
   downloadNews(): void {
@@ -51,12 +57,9 @@ export class ArticleGridComponent implements OnInit {
       news => {
         this.allArticles = news;
         this.articlesToShow = this.allArticles;
-        this.message = null;
-        console.log(this.allArticles);
       },
       err => {
         this.allArticles = null;
-        this.message = `An error has ocurred: ${err.statusText}`
       },
       () => {
         console.log('Get news operation finished');
@@ -70,7 +73,7 @@ export class ArticleGridComponent implements OnInit {
       "articleID": articleID
     };
     
-    this.deleteDialog.open(DialogBodyComponent, dialogConfig);
+    this.deleteDialog.open(DialogDeleteArticleComponent, dialogConfig);
   }
 
   filterArticles(filter: number): void {
