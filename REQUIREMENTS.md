@@ -55,10 +55,10 @@
   - ~~Hide the "welcome, xxxx" message~~
   - ~~Hide the edit and delete buttons from the articles.~~
 - ~~Delete article functionality.~~
-- Finish error catch in services.
+- ~~Finish error catch in services~~
 - ~~New article form functionality - unfinished.~~
 - ~~Image input functionality -> not working.~~
-- Refresh article array after deleting an article.
+- ~~Refresh article array after deleting an article.~~
 - Check when image is not included in the form - show error.
 - Show error when creating and deleting the articles.
 
