@@ -59,8 +59,8 @@
 - ~~New article form functionality - unfinished.~~
 - ~~Image input functionality -> not working.~~
 - ~~Refresh article array after deleting an article.~~
-- Check when image is not included in the form - show error.
-- Show error when creating and deleting the articles.
+- ~~Check when image is not included in the form - show error.~~
+- ~~Show error when creating and deleting the articles.~~
 
 
 **Handy links**
