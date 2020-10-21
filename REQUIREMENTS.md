@@ -8,7 +8,7 @@
   - ~~A button to create a new article which redirects to an empty article edition form.~~
   - ~~A button for each article to remove it.~~
 - ~~Article removal requires the confirmation of the user before applying the removal.~~
-- Article removal must give some feedback to the user with the result of the operation.
+- ~~Article removal must give some feedback to the user with the result of the operation.~~
 
 
 **Login form**
