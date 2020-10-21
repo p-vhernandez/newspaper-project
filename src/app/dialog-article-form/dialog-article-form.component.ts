@@ -11,6 +11,7 @@ export class DialogArticleFormComponent implements OnInit {
 
   isError: boolean;
   isDeleted: boolean;
+  stayInForm: boolean;
 
   error: any;
   errorType: number;
@@ -24,20 +25,42 @@ export class DialogArticleFormComponent implements OnInit {
 
   private GENERIC_ERROR_TITLE: string = "Something went wrong";
   private DELETE_ARTICLE_ERROR_MSG: string = "Article could not be deleted. Try again later.";
+  private IMAGE_ERROR_TITLE: string = "Incomplete article";
+  private IMAGE_ERROR_MSG: string = "Including an image to the article is mandatory.";
+  private CREATE_ARTICLE_ERROR_MSG: string = "There has been an error trying to create the article. Please try again later.";
+
+  /*
+   * ERROR TYPES:
+   *    0: DELETE ARTICLE ERROR
+   *    1: IMAGE MISSING ERROR
+   *    2: 
+   */
 
   constructor(private dialogRef: MatDialogRef<DialogArticleFormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private router: Router) { 
     this.isError = data.isError;
+    this.stayInForm = false;
 
     if (this.isError) {
       this.error = data.error;
       this.errorType = data.errorType;
 
+      console.log(this.errorType);
       switch(this.errorType) {
         case 0:
           this.dialogTitle = this.GENERIC_ERROR_TITLE;
           this.dialogMessage = this.DELETE_ARTICLE_ERROR_MSG;
+          break;
+        case 1:
+          this.dialogTitle = this.IMAGE_ERROR_TITLE;
+          this.dialogMessage = this.IMAGE_ERROR_MSG;
+          this.stayInForm = true;
+          break;
+        case 2:
+          this.dialogTitle = this.GENERIC_ERROR_TITLE;
+          this.dialogMessage = this.CREATE_ARTICLE_ERROR_MSG;
+          this.stayInForm = true;
           break;
       }
     } else {
@@ -57,7 +80,10 @@ export class DialogArticleFormComponent implements OnInit {
 
   dismiss(): void {
     this.dialogRef.close();
-    this.router.navigate(['/articleGrid']);
+    
+    if (!this.stayInForm) {
+      this.router.navigate(['/articleGrid']);
+    }
   }
 
 }

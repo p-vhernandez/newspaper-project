@@ -1,4 +1,5 @@
-<form #articleForm="ngForm" (ngSubmit)="sendArticle()"
+<form #articleForm="ngForm" (ngSubmit)="sendArticle()" 
+      #form="ngForm"
       class="article-form">
     <div class="form-group">
         <label>Title *</label>
@@ -78,13 +79,12 @@
 
     <div class="form-group">
         <label>Body</label>
-        <textarea class="form-control"
-               type="text"
-               [(ngModel)]="article.body" 
-               name="abody" 
-               rows="5"
-               #abody="ngModel"
-               placeholder="Article body"> </textarea>
+        <angular-editor [config]="editorConfig"
+                        [(ngModel)]="article.body"
+                        name="abody"
+                        #abody="ngModel">
+
+        </angular-editor>
     </div>
 
     <div class="form-group">

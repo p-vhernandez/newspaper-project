@@ -20,9 +20,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';
-import { from } from 'rxjs';
 import { DialogArticleFormComponent } from './dialog-article-form/dialog-article-form.component';
 import { ArticleDeletedService } from './services/article-deleted-service/article-deleted-service';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,8 @@ import { ArticleDeletedService } from './services/article-deleted-service/articl
     MatToolbarModule,
     MatButtonModule,
     FlexLayoutModule,
-    MatDialogModule
+    MatDialogModule,
+    AngularEditorModule
   ],
   providers: [ArticleDeletedService],
   bootstrap: [AppComponent]
