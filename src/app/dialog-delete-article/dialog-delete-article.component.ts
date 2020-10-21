@@ -82,6 +82,7 @@ export class DialogDeleteArticleComponent implements OnInit {
       // Delete operation failed
       dialogConfig.data = {
         "isError": true,
+        "errorType": 0,
         "error": err
       }
     }

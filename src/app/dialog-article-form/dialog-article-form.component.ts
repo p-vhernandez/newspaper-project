@@ -22,6 +22,9 @@ export class DialogArticleFormComponent implements OnInit {
   private ARTICLE_DELETED_TITLE: string = "Article deleted";
   private ARTICLE_DELETED_MSG: string = "The article has been successfully deleted.";
 
+  private GENERIC_ERROR_TITLE: string = "Something went wrong";
+  private DELETE_ARTICLE_ERROR_MSG: string = "Article could not be deleted. Try again later.";
+
   constructor(private dialogRef: MatDialogRef<DialogArticleFormComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private router: Router) { 
@@ -29,6 +32,14 @@ export class DialogArticleFormComponent implements OnInit {
 
     if (this.isError) {
       this.error = data.error;
+      this.errorType = data.errorType;
+
+      switch(this.errorType) {
+        case 0:
+          this.dialogTitle = this.GENERIC_ERROR_TITLE;
+          this.dialogMessage = this.DELETE_ARTICLE_ERROR_MSG;
+          break;
+      }
     } else {
       this.isDeleted = data.isDeleted;
 
