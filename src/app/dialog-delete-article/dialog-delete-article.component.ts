@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogArticleFormComponent } from '../dialog-article-form/dialog-article-form.component';
 import { Article } from '../interfaces/article';
+import { ArticleDeletedService } from '../services/article-deleted-service/article-deleted-service';
 import { NewsService } from '../services/news-service/news.service';
 
 @Component({
@@ -21,7 +22,8 @@ export class DialogDeleteArticleComponent implements OnInit {
   constructor(private dialogRef: MatDialogRef<DialogDeleteArticleComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private newsService: NewsService,
-              private articleDialog: MatDialog) {
+              private articleDialog: MatDialog,
+              private articleDeletedService: ArticleDeletedService) {
                 
     this.articleID = data.articleID;
     this.getArticle();
@@ -53,6 +55,7 @@ export class DialogDeleteArticleComponent implements OnInit {
     this.newsService.deleteArticle(this.articleToDelete).subscribe(
       deletedArticle => {
         this.article = deletedArticle;
+        this.articleDeletedService.articleDeleted();
         this.dialogRef.close();
         this.showDeleteArticleMessage(null);
       }, 

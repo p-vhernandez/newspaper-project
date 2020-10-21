@@ -6,6 +6,7 @@ import { LoginService } from '../services/login-service/login.service';
 import { NewsService } from '../services/news-service/news.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogDeleteArticleComponent } from '../dialog-delete-article/dialog-delete-article.component';
+import { ArticleDeletedService } from '../services/article-deleted-service/article-deleted-service';
 
 @Component({
   selector: 'app-article-grid',
@@ -22,13 +23,20 @@ export class ArticleGridComponent implements OnInit {
   constructor(private newsService: NewsService,
               private loginService: LoginService,
               private router: Router,
-              private deleteDialog: MatDialog) {
+              private deleteDialog: MatDialog,
+              private articleDeletedService: ArticleDeletedService) {
       this.content = "";
   }
 
   ngOnInit(): void { 
     this.checkUserLoggedIn();
     this.downloadNews();
+
+    this.articleDeletedService.deleted.subscribe(updateNews => {
+      if (updateNews) {
+        this.downloadNews();
+      }
+    });
   }
   
   checkUserLoggedIn(): void {

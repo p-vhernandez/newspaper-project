@@ -22,6 +22,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatDialogModule } from '@angular/material/dialog';
 import { from } from 'rxjs';
 import { DialogArticleFormComponent } from './dialog-article-form/dialog-article-form.component';
+import { ArticleDeletedService } from './services/article-deleted-service/article-deleted-service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,7 @@ import { DialogArticleFormComponent } from './dialog-article-form/dialog-article
     FlexLayoutModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [ArticleDeletedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
