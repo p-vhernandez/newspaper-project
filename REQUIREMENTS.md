@@ -61,6 +61,7 @@
 - ~~Refresh article array after deleting an article.~~
 - ~~Check when image is not included in the form - show error.~~
 - ~~Show error when creating and deleting the articles.~~
+- Show current image in the form when editing an article.
 
 
 **Handy links**
