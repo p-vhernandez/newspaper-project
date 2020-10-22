@@ -8,6 +8,7 @@ import { LoginService } from '../services/login-service/login.service';
 import { NewsService } from '../services/news-service/news.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -26,21 +27,43 @@ export class ArticleFormComponent implements OnInit {
   imageError: string;
   cardImageBase64: any;
   isImageSaved: boolean;
+  articleEdition: boolean;
 
   constructor(private newsService: NewsService,
-              private articleDialog: MatDialog) { 
-    this.article = {
-      title: '',
-      subtitle: '',
-      abstract: '',
-      update_date: undefined,
-      category: '',
-      body: '',
-      is_deleted: false,
-      is_public: true,
-      image_data: undefined,
-      image_media_type: undefined
-    };
+              private articleDialog: MatDialog,
+              private route: ActivatedRoute) {
+    
+    this.articleEdition = Boolean(JSON.parse(this.route.snapshot.queryParamMap.get('article-edit')));
+    
+    if (this.articleEdition) {
+      this.articleID = Number(this.route.snapshot.queryParamMap.get('article-id'));
+      this.newsService.getArticleByID(this.articleID).subscribe(
+        article => {
+          this.article = article;
+        }, err => {
+          // TODO: show error
+        },
+        ()  => {
+          console.log('Get news operation finished');
+        }
+      );
+    } else {
+      this.article = {
+        title: '',
+        subtitle: '',
+        abstract: '',
+        update_date: undefined,
+        category: '',
+        body: '',
+        is_deleted: false,
+        is_public: true,
+        image_data: undefined,
+        image_media_type: undefined
+      };
+    }        
+    
+    console.log("IS EDITION: " + this.articleEdition);
+    console.log("ARTICLE ID: " + this.articleID);
   }
 
   ngOnInit(): void { }
@@ -52,26 +75,34 @@ export class ArticleFormComponent implements OnInit {
     newArticle.setImageData(this.article.image_data);
     newArticle.setImageMediaType(this.article.image_media_type);
 
-    console.log(newArticle);
-    if (newArticle.image_data == null || newArticle.image_data == undefined 
-          || newArticle.image_media_type == null || newArticle.image_media_type == undefined) {
-      this.showImageError();
+    if (this.articleEdition) {
+      // Edit existing article
+      console.log(newArticle);
     } else {
-      this.newsService.createArticle(newArticle).subscribe(
-        article => {
-          this.article = article;
-          this.articleForm.resetForm();
-          this.showArticleMessage(null);
-        },
-        err => {
-          this.articleForm.resetForm();
-          console.log(err);
-          // this.showArticleMessage(err);
-        },
-        () => {
-          console.log('Create article operation finished');
-        }
-      )
+      // Create new article
+      
+
+      console.log(newArticle);
+      if (newArticle.image_data == null || newArticle.image_data == undefined 
+            || newArticle.image_media_type == null || newArticle.image_media_type == undefined) {
+        this.showImageError();
+      } else {
+        this.newsService.createArticle(newArticle).subscribe(
+          article => {
+            this.article = article;
+            this.articleForm.resetForm();
+            this.showArticleMessage(null);
+          },
+          err => {
+            this.articleForm.resetForm();
+            console.log(err);
+            // this.showArticleMessage(err);
+          },
+          () => {
+            console.log('Create article operation finished');
+          }
+        )
+      }
     }
   }
 
@@ -87,11 +118,6 @@ export class ArticleFormComponent implements OnInit {
         this.imageError = 'Maximum size allowed is ' + MAX_SIZE / 1000 + 'Mb';
         return false;
       }
-
-      // if (!_.includes(ALLOWED_TYPES, fileInput.target.files[0].type)) {
-      //   this.imageError = 'Only Images are allowed ( JPG | PNG )';
-      //   return false;
-      // }
 
       const reader = new FileReader();
       reader.onload = (e: any) => {
@@ -139,6 +165,18 @@ export class ArticleFormComponent implements OnInit {
     dialogConfig.data =  {
       "isError": true,
       "errorType": 1
+    }
+
+    this.articleDialog.open(DialogArticleFormComponent, dialogConfig);
+  }
+
+  showArticleGetError(): void {
+    const dialogConfig = new MatDialogConfig();
+
+    // Article could not be retrieved
+    dialogConfig.data = {
+      "isError": true,
+      "errorType": 3
     }
 
     this.articleDialog.open(DialogArticleFormComponent, dialogConfig);

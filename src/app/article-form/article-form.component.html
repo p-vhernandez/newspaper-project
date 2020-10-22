@@ -61,14 +61,14 @@
 
     <div class="form-group">
         <label>Abstract *</label>
-        <input class="form-control"
-               [(ngModel)]="article.abstract" 
-               [ngClass]="aabstract.valid || aabstract.pristine ? '': 'form-error'"
-               type="text"
-               required
-               placeholder="Article abstract"
-               name="aabstract" 
-               #aabstract="ngModel">
+        <angular-editor [config]="editorConfig"
+                        [ngClass]="aabstract.valid || aabstract.pristine ? '': 'form-error'"
+                        [(ngModel)]="article.abstract"
+                        name="aabstract"
+                        required
+                        #aabstract="ngModel">
+
+        </angular-editor>
     </div>
 
     <div class="alert alert-danger" *ngIf="aabstract.touched && !aabstract.valid">
@@ -104,11 +104,20 @@
             Cancel
         </button>
 
-        <button type="submit"
+        <button *ngIf="articleEdition == false"
+                type="submit"
                 [disabled]="!articleForm.form.valid"
                 class="submit-btn"
                 mat-button>
             Create new article
+        </button>
+
+        <button *ngIf="articleEdition == true"
+                type="submit"
+                [disabled]="!articleForm.form.valid"
+                class="submit-btn"
+                mat-button>
+            Edit article
         </button>
     </div>
 </form>

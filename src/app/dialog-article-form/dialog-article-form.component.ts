@@ -28,12 +28,14 @@ export class DialogArticleFormComponent implements OnInit {
   private IMAGE_ERROR_TITLE: string = "Incomplete article";
   private IMAGE_ERROR_MSG: string = "Including an image to the article is mandatory.";
   private CREATE_ARTICLE_ERROR_MSG: string = "There has been an error trying to create the article. Please try again later.";
+  private RETRIEVE_ARTICLE_ERROR_MSG: string = "We have not been able to find the article you selected, please try again later.";
 
   /*
    * ERROR TYPES:
    *    0: DELETE ARTICLE ERROR
    *    1: IMAGE MISSING ERROR
-   *    2: 
+   *    2: CREATE ARTICLE ERROR
+   *    3: RETRIEVE ARTICLE ERROR
    */
 
   constructor(private dialogRef: MatDialogRef<DialogArticleFormComponent>,
@@ -61,6 +63,10 @@ export class DialogArticleFormComponent implements OnInit {
           this.dialogTitle = this.GENERIC_ERROR_TITLE;
           this.dialogMessage = this.CREATE_ARTICLE_ERROR_MSG;
           this.stayInForm = true;
+          break;
+        case 3:
+          this.dialogTitle = this.GENERIC_ERROR_TITLE;
+          this.dialogMessage = this.RETRIEVE_ARTICLE_ERROR_MSG;
           break;
       }
     } else {
