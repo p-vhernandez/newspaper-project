@@ -3,8 +3,8 @@
 - ~~The main page must show the list of articles retrieved form the server.~~
 - ~~Every article in the main page must include: their title, subtitle, thumbnail of the article image (if exists) and their abstract. The body of the article is not shown in the main page and it will be shown in the article detail page.~~
 - ~~The article title and the article image must navigate to the details page of the correspondingarticle. Article edition is not allowed by means of this links.~~
-- If the user is logged in, the following buttons must appear:
-  - A button for each article to edit them redirecting the user to the edition form. **- BUTTON SHOWN - FUNCTIONALITY MISSING**
+- ~~If the user is logged in, the following buttons must appear:~~
+  - ~~A button for each article to edit them redirecting the user to the edition form.~~
   - ~~A button to create a new article which redirects to an empty article edition form.~~
   - ~~A button for each article to remove it.~~
 - ~~Article removal requires the confirmation of the user before applying the removal.~~
@@ -44,9 +44,9 @@
 - ~~The form must include all input to edit/create the article, that is: title, subtitle, abstract, body and image selection.~~
 - ~~The categories must be selected in a combo with values: National, Economy, Sports and Technology.~~
 - ~~Body can be fill in HTML format (a WYSIWYG editor can be used).~~
-- All inputs of the form (except the body) are mandatory and the form must be validated.
+- ~~All inputs of the form (except the body) are mandatory and the form must be validated.~~
 - ~~This form must include a button to come back to the main page and another button to save/create the form information added by the user.~~
-- Saving information must give some feedback to the user with the result of the operation
+- ~~Saving information must give some feedback to the user with the result of the operation.~~
 
 **Other tasks**
 - ~~When the user is logged in, show the "welcome, xxxx" message next to the "log out" button.~~
@@ -61,7 +61,7 @@
 - ~~Refresh article array after deleting an article.~~
 - ~~Check when image is not included in the form - show error.~~
 - ~~Show error when creating and deleting the articles.~~
-- Show current image in the form when editing an article.
+- ~~Show current image in the form when editing an article.~~
 
 
 **Handy links**
