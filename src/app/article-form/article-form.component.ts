@@ -27,6 +27,7 @@ export class ArticleFormComponent implements OnInit {
   imageError: string;
   cardImageBase64: any;
   isImageSaved: boolean;
+  isImageMissing: boolean;
   articleEdition: boolean;
 
   constructor(private newsService: NewsService,
@@ -40,6 +41,7 @@ export class ArticleFormComponent implements OnInit {
       this.newsService.getArticleByID(this.articleID).subscribe(
         article => {
           this.article = article;
+          this.isImageMissing = false;
         }, err => {
           // TODO: show error
         },
@@ -60,6 +62,8 @@ export class ArticleFormComponent implements OnInit {
         image_data: undefined,
         image_media_type: undefined
       };
+
+      this.isImageMissing = true;
     }        
     
     console.log("IS EDITION: " + this.articleEdition);
@@ -76,34 +80,34 @@ export class ArticleFormComponent implements OnInit {
     newArticle.setImageMediaType(this.article.image_media_type);
 
     if (this.articleEdition) {
-      // Edit existing article
-      console.log(newArticle);
-    } else {
-      // Create new article
-      
-
-      console.log(newArticle);
-      if (newArticle.image_data == null || newArticle.image_data == undefined 
-            || newArticle.image_media_type == null || newArticle.image_media_type == undefined) {
-        this.showImageError();
-      } else {
-        this.newsService.createArticle(newArticle).subscribe(
-          article => {
-            this.article = article;
-            this.articleForm.resetForm();
-            this.showArticleMessage(null);
-          },
-          err => {
-            this.articleForm.resetForm();
-            console.log(err);
-            // this.showArticleMessage(err);
-          },
-          () => {
-            console.log('Create article operation finished');
-          }
-        )
-      }
+      newArticle.setArticleID(this.articleID);
     }
+
+    if (newArticle.image_data == null || newArticle.image_data == undefined 
+        || newArticle.image_media_type == null || newArticle.image_media_type == undefined) {
+      this.showImageError();
+    } else {
+      this.newsService.createArticle(newArticle).subscribe(
+        article => {
+          this.article = article;
+          this.articleForm.resetForm();
+          this.showArticleMessage(null);
+        },
+        err => {
+          this.articleForm.resetForm();
+          console.log(err);
+          this.showArticleMessage(err);
+        },
+        () => {
+          console.log('Create article operation finished');
+        }
+      )
+    }
+  }
+
+  changeImage(): void {
+    this.isImageMissing = true;
+    console.log(this.isImageMissing);
   }
 
   fileChangeEvent(imageInput: any) {
@@ -131,6 +135,8 @@ export class ArticleFormComponent implements OnInit {
           this.article.image_media_type = imageInput.files[0].type;
           const head = this.article.image_media_type.length + 13;
           this.article.image_data = e.target.result.substring(head, e.target.result.length);
+
+          this.isImageMissing = false;
         };
       };
 
@@ -148,10 +154,11 @@ export class ArticleFormComponent implements OnInit {
         "isDeleted": false,
       }
     } else {
-      // Creation operation failed 
+      // Creation/edition operation failed 
       dialogConfig.data = {
         "isError": true,
-        "errorType": 2
+        "errorType": 2,
+        "isEdition": this.articleEdition
       }
     }
 

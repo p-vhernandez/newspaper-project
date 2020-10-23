@@ -55,3 +55,23 @@ button:disabled {
 .shown-button {
     visibility: visible;
 }
+
+.image-div {
+    display: grid;
+}
+
+.image-info-div {
+    margin-top: 2%;
+}
+
+.current-article-image {
+    width: 80%;
+    margin: auto;
+    margin-top: 2%;
+}
+
+.change-image-button {
+    width: 20%;
+    float: right;
+    background-color: #ff6666;
+}
