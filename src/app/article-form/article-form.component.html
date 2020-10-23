@@ -61,14 +61,14 @@
 
     <div class="form-group">
         <label>Abstract *</label>
-        <input class="form-control"
-               [(ngModel)]="article.abstract" 
-               [ngClass]="aabstract.valid || aabstract.pristine ? '': 'form-error'"
-               type="text"
-               required
-               placeholder="Article abstract"
-               name="aabstract" 
-               #aabstract="ngModel">
+        <angular-editor [config]="editorConfig"
+                        [ngClass]="aabstract.valid || aabstract.pristine ? '': 'form-error'"
+                        [(ngModel)]="article.abstract"
+                        name="aabstract"
+                        required
+                        #aabstract="ngModel">
+
+        </angular-editor>
     </div>
 
     <div class="alert alert-danger" *ngIf="aabstract.touched && !aabstract.valid">
@@ -87,7 +87,25 @@
         </angular-editor>
     </div>
 
-    <div class="form-group">
+    <div class="form-group image-div"
+         *ngIf="isImageMissing == false">
+        <div class="image-info-div">
+            <label class="current-article-image-label">Current article image</label>
+
+            <button class="change-image-button"
+                    (click)="changeImage()"
+                    mat-button>
+                Change article image
+            </button>
+        </div>
+
+        <img class="current-article-image"
+             [src]="'data:' + article?.image_media_type + ';base64,' + article?.image_data" 
+             alt="{{article?.image_description}}">
+    </div>
+
+    <div class="form-group"
+         *ngIf="isImageMissing == true">
         <label>Article image *</label>
         <input class="form-control image-input"
                #imageInput
@@ -104,11 +122,20 @@
             Cancel
         </button>
 
-        <button type="submit"
+        <button *ngIf="articleEdition == false"
+                type="submit"
                 [disabled]="!articleForm.form.valid"
                 class="submit-btn"
                 mat-button>
             Create new article
+        </button>
+
+        <button *ngIf="articleEdition == true"
+                type="submit"
+                [disabled]="!articleForm.form.valid"
+                class="submit-btn"
+                mat-button>
+            Edit article
         </button>
     </div>
 </form>

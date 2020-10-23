@@ -8,6 +8,7 @@ import { LoginService } from '../services/login-service/login.service';
 import { NewsService } from '../services/news-service/news.service';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -26,21 +27,47 @@ export class ArticleFormComponent implements OnInit {
   imageError: string;
   cardImageBase64: any;
   isImageSaved: boolean;
+  isImageMissing: boolean;
+  articleEdition: boolean;
 
   constructor(private newsService: NewsService,
-              private articleDialog: MatDialog) { 
-    this.article = {
-      title: '',
-      subtitle: '',
-      abstract: '',
-      update_date: undefined,
-      category: '',
-      body: '',
-      is_deleted: false,
-      is_public: true,
-      image_data: undefined,
-      image_media_type: undefined
-    };
+              private articleDialog: MatDialog,
+              private route: ActivatedRoute) {
+    
+    this.articleEdition = Boolean(JSON.parse(this.route.snapshot.queryParamMap.get('article-edit')));
+    
+    if (this.articleEdition) {
+      this.articleID = Number(this.route.snapshot.queryParamMap.get('article-id'));
+      this.newsService.getArticleByID(this.articleID).subscribe(
+        article => {
+          this.article = article;
+          this.isImageMissing = false;
+        }, err => {
+          // TODO: show error
+        },
+        ()  => {
+          console.log('Get news operation finished');
+        }
+      );
+    } else {
+      this.article = {
+        title: '',
+        subtitle: '',
+        abstract: '',
+        update_date: undefined,
+        category: '',
+        body: '',
+        is_deleted: false,
+        is_public: true,
+        image_data: undefined,
+        image_media_type: undefined
+      };
+
+      this.isImageMissing = true;
+    }        
+    
+    console.log("IS EDITION: " + this.articleEdition);
+    console.log("ARTICLE ID: " + this.articleID);
   }
 
   ngOnInit(): void { }
@@ -52,9 +79,12 @@ export class ArticleFormComponent implements OnInit {
     newArticle.setImageData(this.article.image_data);
     newArticle.setImageMediaType(this.article.image_media_type);
 
-    console.log(newArticle);
+    if (this.articleEdition) {
+      newArticle.setArticleID(this.articleID);
+    }
+
     if (newArticle.image_data == null || newArticle.image_data == undefined 
-          || newArticle.image_media_type == null || newArticle.image_media_type == undefined) {
+        || newArticle.image_media_type == null || newArticle.image_media_type == undefined) {
       this.showImageError();
     } else {
       this.newsService.createArticle(newArticle).subscribe(
@@ -66,13 +96,18 @@ export class ArticleFormComponent implements OnInit {
         err => {
           this.articleForm.resetForm();
           console.log(err);
-          // this.showArticleMessage(err);
+          this.showArticleMessage(err);
         },
         () => {
           console.log('Create article operation finished');
         }
       )
     }
+  }
+
+  changeImage(): void {
+    this.isImageMissing = true;
+    console.log(this.isImageMissing);
   }
 
   fileChangeEvent(imageInput: any) {
@@ -88,11 +123,6 @@ export class ArticleFormComponent implements OnInit {
         return false;
       }
 
-      // if (!_.includes(ALLOWED_TYPES, fileInput.target.files[0].type)) {
-      //   this.imageError = 'Only Images are allowed ( JPG | PNG )';
-      //   return false;
-      // }
-
       const reader = new FileReader();
       reader.onload = (e: any) => {
         const image = new Image();
@@ -105,6 +135,8 @@ export class ArticleFormComponent implements OnInit {
           this.article.image_media_type = imageInput.files[0].type;
           const head = this.article.image_media_type.length + 13;
           this.article.image_data = e.target.result.substring(head, e.target.result.length);
+
+          this.isImageMissing = false;
         };
       };
 
@@ -122,10 +154,11 @@ export class ArticleFormComponent implements OnInit {
         "isDeleted": false,
       }
     } else {
-      // Creation operation failed 
+      // Creation/edition operation failed 
       dialogConfig.data = {
         "isError": true,
-        "errorType": 2
+        "errorType": 2,
+        "isEdition": this.articleEdition
       }
     }
 
@@ -139,6 +172,18 @@ export class ArticleFormComponent implements OnInit {
     dialogConfig.data =  {
       "isError": true,
       "errorType": 1
+    }
+
+    this.articleDialog.open(DialogArticleFormComponent, dialogConfig);
+  }
+
+  showArticleGetError(): void {
+    const dialogConfig = new MatDialogConfig();
+
+    // Article could not be retrieved
+    dialogConfig.data = {
+      "isError": true,
+      "errorType": 3
     }
 
     this.articleDialog.open(DialogArticleFormComponent, dialogConfig);

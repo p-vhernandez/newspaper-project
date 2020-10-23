@@ -20,7 +20,8 @@
     <div class="new-article"
         *ngIf="user != null">
         <button class="btn btn-primary mr-2 new-btn"
-                [routerLink]="['/articleForm']">
+                [routerLink]="['/articleForm']"
+                [queryParams]="{'article-edit': false}">
             Create new article
         </button>
     </div>
@@ -151,7 +152,7 @@
                     <button mat-button
                             *ngIf="user != null"
                             [routerLink]="['/articleForm']"
-                            [queryParams]="{'articleID': article.id}">
+                            [queryParams]="{'article-edit': true, 'article-id': article.id}">
                         <i class="material-icons md-18">edit</i>
                         Edit article
                     </button>

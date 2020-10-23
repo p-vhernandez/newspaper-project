@@ -20,6 +20,7 @@ option:disabled {
 
 .form-buttons {
     margin-top: 5%;
+    margin-bottom: 15% !important;
 }
 
 .cancel-btn, 
@@ -46,3 +47,31 @@ button:disabled {
     background-color: lightgray;
     border-color: lightgray;
 }   
+
+.hidden-button {
+    visibility: hidden;
+}
+
+.shown-button {
+    visibility: visible;
+}
+
+.image-div {
+    display: grid;
+}
+
+.image-info-div {
+    margin-top: 2%;
+}
+
+.current-article-image {
+    width: 80%;
+    margin: auto;
+    margin-top: 2%;
+}
+
+.change-image-button {
+    width: 20%;
+    float: right;
+    background-color: #ff6666;
+}
