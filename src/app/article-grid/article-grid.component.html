@@ -20,6 +20,7 @@
     <div class="new-article"
         *ngIf="user != null">
         <button class="btn btn-primary mr-2 new-btn"
+                mat-button
                 [routerLink]="['/articleForm']"
                 [queryParams]="{'article-edit': false}">
             Create new article
@@ -112,6 +113,8 @@
         </div>
     </div>
 
+    <div class="separator"></div>
+
     <br>
     <br>
 
@@ -119,8 +122,6 @@
          class="article-card">
         <mat-card class="article"
                   *ngFor="let article of articlesToShow | articleFilter:content">
-        <!-- <mat-card class="article"
-                  *ngFor="let article of articlesToShow"> -->
             <div *ngIf="article.is_deleted == 0">
                 <mat-card-content class="article-content">
                     <a href="/articleViewer?article={{ article.id }}">
@@ -143,9 +144,6 @@
                             Read more
                         </a>
                     </p>
-                    <!-- <a href="/articleViewer?article={{ article.id }}">
-                        <p class="article-viewer-btn">Read more</p>
-                    </a> -->
                 </mat-card-content>
 
                 <mat-card-actions class="action-btns">

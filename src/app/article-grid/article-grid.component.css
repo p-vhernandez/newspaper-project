@@ -1,3 +1,7 @@
+.user {
+    margin-bottom: 2%;
+}
+
 .user-welcome {
     width: 50%;
     font-family: 'Work Sans';
@@ -19,6 +23,12 @@
 
 .new-btn {
     float: right;
+    background-color: white;
+    color: black !important;
+}
+
+.new-btn:hover {
+    background-color: goldenrod;
 }
 
 @media(min-width: 1000px) {
@@ -65,7 +75,7 @@
 .article-abstract,
 .article-viewer-btn,
 .detailed-info {
-    text-align: center !important;
+    /* text-align: center !important; */
     font-family: 'Georgia';
 }
 
@@ -95,6 +105,7 @@
 }
 
 .news-navigation {
+    margin-top: 2% !important;
     display: inline;
 }
 
@@ -140,6 +151,11 @@ presented as a dropdown menu instead*/
         text-align: left !important;
         margin-right: 1% !important;
     }
+}
+
+.nav-btn:focus {
+    background-color: black;
+    color: white !important;
 }
 
 .dropdown-content {
@@ -189,4 +205,16 @@ presented as a dropdown menu instead*/
 
 .action-filter {
     margin-right: 2%;
+}
+
+.mat-card {
+    margin: 1% !important;
+    border: none;
+}
+
+.separator {
+    background-color: lightgray;
+    width: 100%;
+    height: 1px;
+    margin-top: 2%;
 }

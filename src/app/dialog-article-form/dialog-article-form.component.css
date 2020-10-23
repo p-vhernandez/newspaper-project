@@ -9,7 +9,7 @@
 }
 
 .login-dialog-actions {
-    float: right;
+    float: right !important;
     margin-top: 2px;
     margin-bottom: 2px;
 }

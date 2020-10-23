@@ -1,4 +1,4 @@
-<h2 class="lean login-title">Welcome back!</h2>
+<h2 class="login-title">Welcome back!</h2>
 
 <br>
 <br>
@@ -6,7 +6,7 @@
 <form #loginForm="ngForm" (ngSubmit)="userLogin()"
       class="login-form">
        <div class="form-group">
-              <label class="lead">Username *</label>
+              <label>Username *</label>
               <input class="input-username"
                      [(ngModel)]="username"
                      type="text" 
@@ -18,7 +18,7 @@
        </div>
 
        <div class="form-group">
-              <label class="lead">Password *</label>
+              <label>Password *</label>
               <input class="input-password"
                      [(ngModel)]="password"
                      type="password" 

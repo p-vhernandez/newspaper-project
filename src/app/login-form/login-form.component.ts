@@ -53,7 +53,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   userIsLoggedIn(): void {
-    console.log(this.user);
     this.newsService.setUserApiKey(this.user.apikey);
     this.router.navigate(['/articleGrid']);
   }
