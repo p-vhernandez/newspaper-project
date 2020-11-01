@@ -49,13 +49,9 @@ export class ArticleGridComponent implements OnInit {
 
   userLogout(): void {
     this.loginService.logout();
-<<<<<<< HEAD
     this.user = this.loginService.getUser();
-=======
     // TODO: reload content (unshow buttons, change button, etc)
-    this.user = null;
-    this.allArticles = this.allArticles;
->>>>>>> 02504dc1c2d50dda72ea8d67ac41e3b485dac03d
+
   }
 
   downloadNews(): void {
