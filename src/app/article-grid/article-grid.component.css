@@ -16,6 +16,10 @@
     margin-top: -5%;
 }
 
+.article-filter-input {
+    margin-left: 2em;
+}
+
 .login-btn {
     float: top;
     position: right;
