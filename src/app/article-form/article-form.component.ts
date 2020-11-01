@@ -70,7 +70,16 @@ export class ArticleFormComponent implements OnInit {
     console.log("ARTICLE ID: " + this.articleID);
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    let articleID: number = +(this.route.snapshot.queryParamMap.get('id'))
+    this.newsService.getArticleByID(articleID).subscribe(
+      article => {
+        this.article = article
+      },
+      err => { /* no-op */ },
+      () => { /* no-op */ }
+    );
+  }
 
   sendArticle(): void {
     let newArticle = new MyArticle(this.article);

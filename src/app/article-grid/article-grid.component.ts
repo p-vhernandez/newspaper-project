@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { Article } from '../interfaces/article';
 import { User } from '../interfaces/user';
 import { LoginService } from '../services/login-service/login.service';
@@ -102,6 +102,13 @@ export class ArticleGridComponent implements OnInit {
       return this.allArticles.filter(function(article) {
         return article.category == category;
       });
+  }
+
+  editArticle(articleID: number): void {
+    let navigationExtras: NavigationExtras = {
+      queryParams: { 'id': articleID }
+    };
+    this.router.navigate(['articleForm'], navigationExtras)
   }
 
 }
