@@ -19,6 +19,7 @@ export class ArticleGridComponent implements OnInit {
   allArticles: Article[];
   articlesToShow: Article[];
   content: string;
+  isLoading = false
 
   constructor(private newsService: NewsService,
               private loginService: LoginService,
@@ -55,6 +56,7 @@ export class ArticleGridComponent implements OnInit {
   }
 
   downloadNews(): void {
+    this.isLoading = true
     this.newsService.getAllNews().subscribe(
       news => {
         this.allArticles = news;
@@ -65,6 +67,7 @@ export class ArticleGridComponent implements OnInit {
       },
       () => {
         console.log('Get news operation finished');
+        this.isLoading = false
       }
     );
   }

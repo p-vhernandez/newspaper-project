@@ -1,21 +1,24 @@
+<div class="clearfix">
+    <span class="user-welcome" *ngIf="user != null" style="margin-top: 50%;">Welcome back, {{ user.username }}!</span> 
+    <button class="btn btn-primary mr-2 login-btn float-right"
+            *ngIf="user == null"
+            mat-button
+            [routerLink]="['/loginForm']">
+        Login
+    </button>
+    <button class="btn btn-primary mr-2 login-btn float-right"
+            *ngIf="user != null"
+            mat-button
+            (click)="userLogout()">
+        Log out
+    </button>
+</div>
+
+<div class="separator"></div>
+
 <div class="content">
 
-    <div class="user">
-        <p class="user-welcome"
-           *ngIf="user != null">Welcome back, {{ user.username }}!</p>
-        <button class="btn btn-primary mr-2 login-btn"
-                *ngIf="user == null"
-                mat-button
-                [routerLink]="['/loginForm']">
-            Login
-        </button>
-        <button class="btn btn-primary mr-2 login-btn"
-                *ngIf="user != null"
-                mat-button
-                (click)="userLogout()">
-            Log out
-        </button>
-    </div>
+    <br>
     
     <div class="new-article"
         *ngIf="user != null">
@@ -23,12 +26,10 @@
                 mat-button
                 [routerLink]="['/articleForm']"
                 [queryParams]="{'article-edit': false}">
+            <i class="material-icons md-18">add</i>
             Create new article
         </button>
     </div>
-
-    <br>
-    <br>
 
     <div class="news-navigation">
         <button mat-button 
@@ -117,6 +118,8 @@
 
     <br>
     <br>
+
+    <p *ngIf="isLoading">Articles are loading...</p>
 
     <div fxLayout="row wrap"
          class="article-card">

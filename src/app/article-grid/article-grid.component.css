@@ -1,18 +1,24 @@
 .user {
-    margin-bottom: 2%;
+    margin-bottom: 5%;
 }
+
+.mat-card:first-child { margin-top: 0; }
 
 .user-welcome {
     width: 50%;
     font-family: 'Work Sans';
     font-size: 16px;
-    float: left;
-    margin: auto;
+    float: top;
     color: lightslategray;
 }
 
+.clearfix {
+    margin-top: -5%;
+}
+
 .login-btn {
-    float: right;
+    float: top;
+    position: right;
     background-color: black;
     color: white;
 }
@@ -28,7 +34,7 @@
 }
 
 .new-btn:hover {
-    background-color: goldenrod;
+    background-color: grey;
 }
 
 @media(min-width: 1000px) {
