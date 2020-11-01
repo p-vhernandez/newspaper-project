@@ -16,10 +16,6 @@
     margin-top: -5%;
 }
 
-.article-filter-input {
-    margin-left: 2em;
-}
-
 .login-btn {
     float: top;
     position: right;
@@ -45,17 +41,29 @@
     .article {
         width: 30%;
     }
+
+    .article-filter-input {
+        margin-left: 2em;
+    }
 }
 
 @media(min-width: 770px) and (max-width: 999px) {
     .article {
         width: 48%;
     }
+
+    .article-filter-input {
+        margin-left: 2em;
+    }
 }
 
 @media(max-width: 769px) {
     .article {
         width: 100%;
+    }
+
+    .article-filter-input {
+        margin-left: 0;
     }
 }
 
