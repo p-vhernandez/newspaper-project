@@ -201,7 +201,7 @@ export class ArticleFormComponent implements OnInit {
   /*****************************************************************************
    * Angular editor configuration                                              *
    *****************************************************************************/
-  editorConfig: AngularEditorConfig = {
+  bodyEditorConfig: AngularEditorConfig = {
     editable: true,
       spellcheck: true,
       height: 'auto',
@@ -255,6 +255,62 @@ export class ArticleFormComponent implements OnInit {
         'insertHorizontalMode'
       ]
     ]
+};
+
+abstractEditorConfig: AngularEditorConfig = {
+  editable: true,
+    spellcheck: true,
+    height: 'auto',
+    minHeight: '0',
+    maxHeight: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
+    placeholder: 'Article abstract',
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+    fonts: [
+      {class: 'arial', name: 'Arial'},
+      {class: 'times-new-roman', name: 'Times New Roman'},
+      {class: 'calibri', name: 'Calibri'},
+      {class: 'comic-sans-ms', name: 'Comic Sans MS'}
+    ],
+    customClasses: [
+    {
+      name: 'quote',
+      class: 'quote',
+    },
+    {
+      name: 'redText',
+      class: 'redText'
+    },
+    {
+      name: 'titleText',
+      class: 'titleText',
+      tag: 'h1',
+    },
+  ],
+  uploadUrl: 'v1/image',
+  uploadWithCredentials: false,
+  sanitize: true,
+  toolbarPosition: 'top',
+  toolbarHiddenButtons: [
+    [
+      'indent',
+      'outdent',
+      'fontName'
+    ],
+    [
+      'fontSize',
+      'customClasses',
+      'insertImage',
+      'insertVideo',
+      'insertHorizontalMode'
+    ]
+  ]
 };
 
 }

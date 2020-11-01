@@ -63,3 +63,12 @@ button:disabled {
     margin-top: -3%;
     margin-bottom: 2%;
 }
+
+div.image {
+    content:url(https://i.ibb.co/TrTzkm8/Picture.png);
+    overflow: hidden;
+    background-size: cover;
+    background-position: 50% 50%;
+    margin-left: -32%;
+    /* margin-right: -50%; */
+ }

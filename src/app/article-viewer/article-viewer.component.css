@@ -71,11 +71,12 @@
 
 .back-btn {
     margin-bottom: 10%;
+    background-color: white;
+    color:#105AAA !important;
 }
 
 .back-btn:hover {
-    background-color: black;
-    color: white;
+    background-color: #a8d9ff77;
 }
 
 .separator {

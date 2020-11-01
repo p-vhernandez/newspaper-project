@@ -61,7 +61,7 @@
 
     <div class="form-group">
         <label>Abstract *</label>
-        <angular-editor [config]="editorConfig"
+        <angular-editor [config]="abstractEditorConfig"
                         [ngClass]="aabstract.valid || aabstract.pristine ? '': 'form-error'"
                         [(ngModel)]="article.abstract"
                         name="aabstract"
@@ -79,7 +79,7 @@
 
     <div class="form-group">
         <label>Body</label>
-        <angular-editor [config]="editorConfig"
+        <angular-editor [config]="bodyEditorConfig"
                         [(ngModel)]="article.body"
                         name="abody"
                         #abody="ngModel">
