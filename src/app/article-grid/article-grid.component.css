@@ -30,11 +30,11 @@
 .new-btn {
     float: right;
     background-color: white;
-    color: black !important;
+    color:#105AAA !important;
 }
 
 .new-btn:hover {
-    background-color: grey;
+    background-color: #a8d9ff77;
 }
 
 @media(min-width: 1000px) {
@@ -104,7 +104,7 @@
 }
 
 .article-viewer-btn {
-    color: black;
+    color: #105AAA;
     text-decoration: underline;
     padding: 1%;
 }
@@ -115,11 +115,12 @@
 
 .action-btns {
     float: right;
+    background-color: white;
+    color:#105AAA !important;
 }
 
 .action-btns button:hover {
-    background-color: black;
-    color: white;
+    background-color: #a8d9ff77;
 }
 
 .news-navigation {
